@@ -2,10 +2,14 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import "./header.styles.scss";
+import { User } from "firebase";
+import { auth } from "../../firebase/firebase.utils";
 
-export interface IHeaderProps {}
+export interface IHeaderProps {
+  currentUser: User | null;
+}
 
-export default function Header(props: IHeaderProps) {
+export default function Header({ currentUser }: IHeaderProps) {
   return (
     <div className="header">
       <Link to="/" className="logo-container">
@@ -16,6 +20,15 @@ export default function Header(props: IHeaderProps) {
         <Link className="option" to="/contact">
           CONTACT
         </Link>
+        {currentUser ? (
+          <div className="option" onClick={() => auth.signOut()}>
+            SIGN OUT
+          </div>
+        ) : (
+          <Link className="option" to="/signIn">
+            SIGN IN
+          </Link>
+        )}
       </div>
     </div>
   );
