@@ -2,11 +2,11 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import "./header.styles.scss";
-import { User } from "firebase";
 import { auth } from "../../firebase/firebase.utils";
+import { IUserAuth } from "../../IUserAuth";
 
 export interface IHeaderProps {
-  currentUser: User | null;
+  currentUser: IUserAuth | null;
 }
 
 export default function Header({ currentUser }: IHeaderProps) {
