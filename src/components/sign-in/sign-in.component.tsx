@@ -3,7 +3,7 @@ import { ISignInInfo } from "./ISignInInfo";
 import FormInput from "../form-input/form-input.component";
 import "./sign-in.styles.scss";
 import { CustomButton } from "../custom-button/custom-button.component";
-import { signInWithGoogle } from "../../firebase/firebase.utils";
+import { signInWithGoogle, auth } from "../../firebase/firebase.utils";
 
 export interface ISignInProps {}
 
@@ -12,17 +12,22 @@ export function SignIn(props: ISignInProps) {
     email: "",
     password: "",
   });
-
-  const _handleSubmit = (event: React.FormEvent) => {
+  const { email, password } = signInInfo;
+  const _handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    setSignInInfo({ email: "", password: "" });
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      setSignInInfo({ email: "", password: "" });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const _handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = event.target;
     setSignInInfo((prevState) => ({ ...prevState, [name]: value }));
   };
-  const { email, password } = signInInfo;
+
   return (
     <div className="sign-in">
       <h2>I already have an account</h2>
