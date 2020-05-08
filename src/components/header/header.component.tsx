@@ -5,10 +5,12 @@ import "./header.styles.scss";
 import { auth } from "../../firebase/firebase.utils";
 import { RootState } from "../../redux/root-reducer";
 import { ConnectedProps, connect } from "react-redux";
+import CartIcon from "../cart-icon/cart-icon.component";
+import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 
 type IHeaderProps = ConnectedProps<typeof connector>;
 
-function Header({ currentUser }: IHeaderProps) {
+function Header({ currentUser, hidden }: IHeaderProps) {
   return (
     <div className="header">
       <Link to="/" className="logo-container">
@@ -28,12 +30,18 @@ function Header({ currentUser }: IHeaderProps) {
             SIGN IN
           </Link>
         )}
+        <CartIcon></CartIcon>
       </div>
+      {hidden ? null : <CartDropdown></CartDropdown>}
     </div>
   );
 }
-const mapStateToProps = (state: RootState) => ({
-  currentUser: state.user.currentUser,
+const mapStateToProps = ({
+  user: { currentUser },
+  cart: { hidden },
+}: RootState) => ({
+  currentUser: currentUser,
+  hidden: hidden,
 });
 
 const connector = connect(mapStateToProps, null);
