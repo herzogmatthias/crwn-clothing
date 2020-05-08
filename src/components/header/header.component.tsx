@@ -3,13 +3,12 @@ import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import "./header.styles.scss";
 import { auth } from "../../firebase/firebase.utils";
-import { IUserAuth } from "../../IUserAuth";
+import { RootState } from "../../redux/root-reducer";
+import { ConnectedProps, connect } from "react-redux";
 
-export interface IHeaderProps {
-  currentUser: IUserAuth | null;
-}
+type IHeaderProps = ConnectedProps<typeof connector>;
 
-export default function Header({ currentUser }: IHeaderProps) {
+function Header({ currentUser }: IHeaderProps) {
   return (
     <div className="header">
       <Link to="/" className="logo-container">
@@ -33,3 +32,9 @@ export default function Header({ currentUser }: IHeaderProps) {
     </div>
   );
 }
+const mapStateToProps = (state: RootState) => ({
+  currentUser: state.user.currentUser,
+});
+
+const connector = connect(mapStateToProps, null);
+export default connect(mapStateToProps, null)(Header);

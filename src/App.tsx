@@ -6,21 +6,27 @@ import { ShopPage } from "./pages/shop/shop.component";
 import Header from "./components/header/header.component";
 import { SignInAndSignUp } from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
-import { User, Unsubscribe } from "firebase";
+import { Unsubscribe } from "firebase";
 import { IUserAuth } from "./IUserAuth";
+import { connect, ConnectedProps } from "react-redux";
+import { setCurrentUser } from "./redux/user/user.actions";
 
-function App() {
-  const [currentUser, setUser] = React.useState<IUserAuth | null>(null);
+type IAppProps = ConnectedProps<typeof connector>;
+
+function App({ setCurrentUser }: IAppProps) {
   let unsubscripeFromAuth: Unsubscribe;
   useEffect(() => {
     unsubscripeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
         userRef!.onSnapshot((snapShot) => {
-          setUser({ id: snapShot.id, ...(snapShot.data() as IUserAuth) });
+          setCurrentUser({
+            id: snapShot.id,
+            ...(snapShot.data() as IUserAuth),
+          });
         });
       } else {
-        setUser(null);
+        setCurrentUser(null);
       }
     });
     return function cleanup() {
@@ -29,7 +35,7 @@ function App() {
   }, []);
   return (
     <div>
-      <Header currentUser={currentUser}></Header>
+      <Header></Header>
       <Switch>
         <Route path="/shop/:section" component={ShopPage}></Route>
         <Route exact path="/" component={HomePage}></Route>
@@ -39,4 +45,8 @@ function App() {
   );
 }
 
-export default App;
+const mapDispatchToProps = {
+  setCurrentUser: setCurrentUser,
+};
+const connector = connect(null, mapDispatchToProps);
+export default connect(null, mapDispatchToProps)(App);
