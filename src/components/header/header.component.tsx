@@ -44,5 +44,5 @@ const mapStateToProps = ({
   hidden: hidden,
 });
 
-const connector = connect(mapStateToProps, null);
-export default connect(mapStateToProps, null)(Header);
+const connector = connect(mapStateToProps, {});
+export default connect(mapStateToProps, {})(Header);
