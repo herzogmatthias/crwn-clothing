@@ -4,6 +4,7 @@ import { CustomButton } from "../custom-button/custom-button.component";
 import { RootState } from "../../redux/root-reducer";
 import { ConnectedProps, connect } from "react-redux";
 import CartItem from "../cart-item/cart-item.component";
+import { selectCartItems } from "../../redux/cart/cart.selectors";
 
 type ICartDropdownProps = ConnectedProps<typeof connector>;
 
@@ -20,8 +21,8 @@ function CartDropdown({ cartItems }: ICartDropdownProps) {
   );
 }
 
-const mapStateToProps = ({ cart: { cartItems } }: RootState) => ({
-  cartItems: cartItems,
+const mapStateToProps = (state: RootState) => ({
+  cartItems: selectCartItems(state),
 });
 
 const connector = connect(mapStateToProps, {});
