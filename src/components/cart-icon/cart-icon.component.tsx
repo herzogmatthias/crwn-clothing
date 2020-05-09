@@ -5,6 +5,11 @@ import { ConnectedProps, connect } from "react-redux";
 import { toggleCartHidden } from "../../redux/cart/cart.actions";
 import { RootState } from "../../redux/root-reducer";
 import { selectCartItemsCount } from "../../redux/cart/cart.selectors";
+import { createStructuredSelector } from "reselect";
+
+interface ISelectorProps {
+  itemCount: number;
+}
 
 type ICartIconProps = ConnectedProps<typeof connector>;
 
@@ -21,8 +26,8 @@ const mapDispatchToProps = {
   toggleCartHidden: toggleCartHidden,
 };
 
-const mapStateToProps = (state: RootState) => ({
-  itemCount: selectCartItemsCount(state),
+const mapStateToProps = createStructuredSelector<RootState, ISelectorProps>({
+  itemCount: selectCartItemsCount,
 });
 
 const connector = connect(mapStateToProps, mapDispatchToProps);

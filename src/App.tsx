@@ -11,6 +11,13 @@ import { IUserAuth } from "./IUserAuth";
 import { connect, ConnectedProps } from "react-redux";
 import { setCurrentUser } from "./redux/user/user.actions";
 import { RootState } from "./redux/root-reducer";
+import { selectCurrentUser } from "./redux/user/user.selectors";
+import { createStructuredSelector } from "reselect";
+import CheckoutPage from "./pages/checkout/checkout.component";
+
+interface ISelectorProps {
+  currentUser: IUserAuth | null;
+}
 
 type IAppProps = ConnectedProps<typeof connector>;
 
@@ -30,7 +37,9 @@ function App({ setCurrentUser, currentUser }: IAppProps) {
         setCurrentUser(null);
       }
     });
-    return function cleanup() {
+  }, []);
+  useEffect(() => {
+    return () => {
       unsubscripeFromAuth();
     };
   }, []);
@@ -50,13 +59,14 @@ function App({ setCurrentUser, currentUser }: IAppProps) {
             )
           }
         ></Route>
+        <Route exact path="/checkout" component={CheckoutPage}></Route>
       </Switch>
     </div>
   );
 }
 
-const mapStateToProps = (state: RootState) => ({
-  currentUser: state.user.currentUser,
+const mapStateToProps = createStructuredSelector<RootState, ISelectorProps>({
+  currentUser: selectCurrentUser,
 });
 
 const mapDispatchToProps = {
