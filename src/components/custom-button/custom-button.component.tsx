@@ -6,16 +6,20 @@ export interface ICustomButtonProps {
   onClick?(): void;
   type?: "button" | "submit" | "reset" | undefined;
   isGoogleSignIn: boolean;
+  inverted: boolean;
 }
 
 export function CustomButton({
   children,
   isGoogleSignIn,
+  inverted,
   ...otherProps
 }: ICustomButtonProps) {
   return (
     <button
-      className={`${isGoogleSignIn ? "google-sign-in" : ""} custom-button`}
+      className={`${inverted ? "inverted" : ""} ${
+        isGoogleSignIn ? "google-sign-in" : ""
+      } custom-button`}
       {...otherProps}
     >
       {children}
@@ -25,4 +29,5 @@ export function CustomButton({
 
 CustomButton.defaultProps = {
   isGoogleSignIn: false,
+  inverted: false,
 } as Partial<ICustomButtonProps>;
