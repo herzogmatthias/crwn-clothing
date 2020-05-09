@@ -1,8 +1,14 @@
 import { ICartState } from "./ICartState";
 import { createReducer, PayloadAction } from "@reduxjs/toolkit";
-import { toggleCartHidden, addItem } from "./cart.actions";
+import {
+  toggleCartHidden,
+  addItem,
+  clearItemFromCart,
+  removeItem,
+} from "./cart.actions";
 import { IShopItem } from "../../pages/shop/IShopItem";
-import { addItemToCart } from "./cart.utils";
+import { addItemToCart, removeItemFromCart } from "./cart.utils";
+import { ICartItem } from "./ICartItem";
 
 const initialState: ICartState = {
   hidden: true,
@@ -15,6 +21,14 @@ const cartReducer = createReducer(initialState, {
   },
   [addItem.type]: (state, action: PayloadAction<IShopItem>) => {
     state.cartItems = addItemToCart(state.cartItems, action.payload);
+  },
+  [clearItemFromCart.type]: (state, action: PayloadAction<ICartItem>) => {
+    state.cartItems = state.cartItems.filter(
+      (cartItem) => cartItem.id !== action.payload.id
+    );
+  },
+  [removeItem.type]: (state, action: PayloadAction<ICartItem>) => {
+    state.cartItems = removeItemFromCart(state.cartItems, action.payload);
   },
 });
 
