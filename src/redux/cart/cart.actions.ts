@@ -6,7 +6,7 @@ import {
   REMOVE_ITEM,
 } from "./cart.types";
 import { withPayloadType } from "../genericActionPayloadType";
-import { IShopItem } from "../../pages/shop/IShopItem";
+import { IShopItem } from "../shop/IShopItem";
 import { ICartItem } from "./ICartItem";
 
 export const toggleCartHidden = createAction(TOGGLE_CART_HIDDEN);

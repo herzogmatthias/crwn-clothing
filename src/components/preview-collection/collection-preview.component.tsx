@@ -1,5 +1,5 @@
 import * as React from "react";
-import { IShopItem } from "../../pages/shop/IShopItem";
+import { IShopItem } from "../../redux/shop/IShopItem";
 import "./collection-preview.styles.scss";
 import CollectionItem from "../collection-item/collection-item.component";
 

@@ -6,7 +6,7 @@ import {
   clearItemFromCart,
   removeItem,
 } from "./cart.actions";
-import { IShopItem } from "../../pages/shop/IShopItem";
+import { IShopItem } from "../shop/IShopItem";
 import { addItemToCart, removeItemFromCart } from "./cart.utils";
 import { ICartItem } from "./ICartItem";
 

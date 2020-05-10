@@ -1,22 +1,24 @@
 import * as React from "react";
-import { ICategory } from "./ICategory";
-import { SHOP_DATA } from "./shop.data";
-import { CollectionPreview } from "../../components/preview-collection/collection-preview.component";
+import CollectionsOverview from "../../components/collections-overview/collections-overview.component";
+import { Route, RouteComponentProps } from "react-router-dom";
+import CollectionPage from "../collection/collection.component";
 
-export interface IShopPageProps {}
+interface IShopPageProps extends RouteComponentProps {}
 
-export function ShopPage(props: IShopPageProps) {
-  const [collections] = React.useState<ICategory[]>(SHOP_DATA);
+function ShopPage({ match }: IShopPageProps) {
   return (
     <div className="shop-page">
-      {collections.map(({ id, ...otherCollectionProps }: ICategory) => {
-        return (
-          <CollectionPreview
-            key={id}
-            {...otherCollectionProps}
-          ></CollectionPreview>
-        );
-      })}
+      <Route
+        exact
+        path={`${match.path}`}
+        component={CollectionsOverview}
+      ></Route>
+      <Route
+        path={`${match.path}/:categoryId`}
+        component={CollectionPage}
+      ></Route>
     </div>
   );
 }
+
+export default ShopPage;

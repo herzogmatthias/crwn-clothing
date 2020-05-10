@@ -4,7 +4,7 @@ import "./collection-item.styles.scss";
 import { CustomButton } from "../custom-button/custom-button.component";
 import { connect, ConnectedProps } from "react-redux";
 import { addItem } from "../../redux/cart/cart.actions";
-import { IShopItem } from "../../pages/shop/IShopItem";
+import { IShopItem } from "../../redux/shop/IShopItem";
 
 type ICollectionItemProps = ConnectedProps<typeof connector> & {
   item: IShopItem;
