@@ -1,5 +1,5 @@
 import * as React from "react";
-import "./custom-button.styles.scss";
+import { CustomButtonContainer } from "./custom-button.styles";
 
 export interface ICustomButtonProps {
   children: string;
@@ -9,21 +9,9 @@ export interface ICustomButtonProps {
   inverted: boolean;
 }
 
-export function CustomButton({
-  children,
-  isGoogleSignIn,
-  inverted,
-  ...otherProps
-}: ICustomButtonProps) {
+export function CustomButton(props: ICustomButtonProps) {
   return (
-    <button
-      className={`${inverted ? "inverted" : ""} ${
-        isGoogleSignIn ? "google-sign-in" : ""
-      } custom-button`}
-      {...otherProps}
-    >
-      {children}
-    </button>
+    <CustomButtonContainer {...props}>{props.children}</CustomButtonContainer>
   );
 }
 

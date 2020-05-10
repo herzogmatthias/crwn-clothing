@@ -1,7 +1,5 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
-import "./header.styles.scss";
 import { auth } from "../../firebase/firebase.utils";
 import { RootState } from "../../redux/root-reducer";
 import { ConnectedProps, connect } from "react-redux";
@@ -11,6 +9,12 @@ import { selectCurrentUser } from "../../redux/user/user.selectors";
 import { selectCartHidden } from "../../redux/cart/cart.selectors";
 import { createStructuredSelector } from "reselect";
 import { IUserAuth } from "../../IUserAuth";
+import {
+  HeaderContainer,
+  LogoContainer,
+  OptionLink,
+  OptionsContainer,
+} from "./header.styles";
 
 interface ISelectorProps {
   currentUser: null | IUserAuth;
@@ -21,28 +25,24 @@ type IHeaderProps = ConnectedProps<typeof connector>;
 
 function Header({ currentUser, hidden }: IHeaderProps) {
   return (
-    <div className="header">
-      <Link to="/" className="logo-container">
+    <HeaderContainer>
+      <LogoContainer to="/">
         <Logo className="logo"></Logo>
-      </Link>
-      <div className="options">
-        <Link to="/shop">SHOP</Link>
-        <Link className="option" to="/contact">
-          CONTACT
-        </Link>
+      </LogoContainer>
+      <OptionsContainer>
+        <OptionLink to="/shop">SHOP</OptionLink>
+        <OptionLink to="/contact">CONTACT</OptionLink>
         {currentUser ? (
-          <div className="option" onClick={() => auth.signOut()}>
+          <OptionLink as="div" onClick={() => auth.signOut()}>
             SIGN OUT
-          </div>
+          </OptionLink>
         ) : (
-          <Link className="option" to="/signIn">
-            SIGN IN
-          </Link>
+          <OptionLink to="/signIn">SIGN IN</OptionLink>
         )}
         <CartIcon></CartIcon>
-      </div>
+      </OptionsContainer>
       {hidden ? null : <CartDropdown></CartDropdown>}
-    </div>
+    </HeaderContainer>
   );
 }
 const mapStateToProps = createStructuredSelector<RootState, ISelectorProps>({
