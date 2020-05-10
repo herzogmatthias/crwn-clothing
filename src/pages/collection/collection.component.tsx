@@ -3,26 +3,29 @@ import { RouteComponentProps } from "react-router-dom";
 import "./collection.styles.scss";
 import { connect, ConnectedProps } from "react-redux";
 import { RootState } from "../../redux/root-reducer";
-import {
-  selectCollection,
-  COLLECTION_ID_MAP,
-} from "../../redux/shop/shop.selectors";
+import { selectCollection } from "../../redux/shop/shop.selectors";
+import CollectionItem from "../../components/collection-item/collection-item.component";
 
 type ICollectionPageProps = ConnectedProps<typeof connector> &
-  RouteComponentProps<{ categoryId: keyof typeof COLLECTION_ID_MAP }>;
+  RouteComponentProps<{ categoryId: string }>;
 
-function CollectionPage({ match, collection }: ICollectionPageProps) {
-  console.log(collection);
+function CollectionPage({ collection }: ICollectionPageProps) {
+  const { title, items } = collection;
   return (
-    <div className="category">
-      <h2>CATEGORY PAGE</h2>
+    <div className="collection-page">
+      <h2 className="title">{title}</h2>
+      <div className="items">
+        {items.map((item) => (
+          <CollectionItem key={item.id} item={item}></CollectionItem>
+        ))}
+      </div>
     </div>
   );
 }
 
 const mapStateToProps = (
   state: RootState,
-  ownProps: RouteComponentProps<{ categoryId: keyof typeof COLLECTION_ID_MAP }>
+  ownProps: RouteComponentProps<{ categoryId: string }>
 ) => ({
   collection: selectCollection(ownProps.match.params.categoryId)(state),
 });

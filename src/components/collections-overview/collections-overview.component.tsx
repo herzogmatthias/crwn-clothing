@@ -6,9 +6,10 @@ import { createStructuredSelector } from "reselect";
 import { RootState } from "../../redux/root-reducer";
 import { selectShopCollections } from "../../redux/shop/shop.selectors";
 import { CollectionPreview } from "../preview-collection/collection-preview.component";
+import { ICategoryMap } from "../../redux/shop/ICategoryMap";
 
 interface ISelectorProps {
-  collections: ICategory[];
+  collections: ICategoryMap;
 }
 
 type ICollectionsOverviewProps = ConnectedProps<typeof connector>;
@@ -16,11 +17,11 @@ type ICollectionsOverviewProps = ConnectedProps<typeof connector>;
 function CollectionsOverview({ collections }: ICollectionsOverviewProps) {
   return (
     <div className="collections-overview">
-      {collections.map(({ id, ...otherCollectionProps }: ICategory) => {
+      {Object.keys(collections).map((key: string, index: number) => {
         return (
           <CollectionPreview
-            key={id}
-            {...otherCollectionProps}
+            key={index}
+            {...collections[key]}
           ></CollectionPreview>
         );
       })}

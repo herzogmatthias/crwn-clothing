@@ -1,5 +1,5 @@
-import { ICategory } from "./ICategory";
+import { ICategoryMap } from "./ICategoryMap";
 
 export interface IShopState {
-  collections: ICategory[];
+  collections: ICategoryMap;
 }
