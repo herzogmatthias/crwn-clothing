@@ -1,16 +1,15 @@
 import * as React from "react";
 import { SignIn } from "../../components/sign-in/sign-in.component";
 import SignUp from "../../components/sign-up/sign-up.component";
-
-import "./sign-in-and-sign-up.styles.scss";
+import { SignInAndSignUpContainer } from "./sign-in-and-sign-up.styles";
 
 export interface ISignInAndSignUpProps {}
 
 export function SignInAndSignUp(props: ISignInAndSignUpProps) {
   return (
-    <div className="sign-in-and-sign-up">
+    <SignInAndSignUpContainer>
       <SignIn></SignIn>
       <SignUp></SignUp>
-    </div>
+    </SignInAndSignUpContainer>
   );
 }

@@ -1,11 +1,11 @@
 import * as React from "react";
-import "./collections-overview.styles.scss";
 import { connect, ConnectedProps } from "react-redux";
 import { ICategory } from "../../redux/shop/ICategory";
 import { createStructuredSelector } from "reselect";
 import { RootState } from "../../redux/root-reducer";
 import { selectCollectionsForPreview } from "../../redux/shop/shop.selectors";
 import { CollectionPreview } from "../preview-collection/collection-preview.component";
+import { CollectionOverviewContainer } from "./collection-overview.styles";
 
 interface ISelectorProps {
   collections: ICategory[];
@@ -15,7 +15,7 @@ type ICollectionsOverviewProps = ConnectedProps<typeof connector>;
 
 function CollectionsOverview({ collections }: ICollectionsOverviewProps) {
   return (
-    <div className="collections-overview">
+    <CollectionOverviewContainer>
       {collections.map(({ id, ...otherCollectionProps }: ICategory) => {
         return (
           <CollectionPreview
@@ -24,7 +24,7 @@ function CollectionsOverview({ collections }: ICollectionsOverviewProps) {
           ></CollectionPreview>
         );
       })}
-    </div>
+    </CollectionOverviewContainer>
   );
 }
 const mapStateToProps = createStructuredSelector<RootState, ISelectorProps>({

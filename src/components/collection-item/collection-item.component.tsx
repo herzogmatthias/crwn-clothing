@@ -13,11 +13,12 @@ import {
 
 type ICollectionItemProps = ConnectedProps<typeof connector> & {
   item: IShopItem;
+  className?: string;
 };
 
-function CollectionItem({ item, addItem }: ICollectionItemProps) {
+function CollectionItem({ item, addItem, className }: ICollectionItemProps) {
   return (
-    <CollectionItemContainer>
+    <CollectionItemContainer className={className}>
       <ImageContainer imageUrl={item.imageUrl}></ImageContainer>
       <CollectionFooterContainer>
         <NameContainer>{item.name}</NameContainer>

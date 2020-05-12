@@ -1,5 +1,9 @@
 import * as React from "react";
-import "./form-input.styles.scss";
+import {
+  GroupContainer,
+  FormInputContainer,
+  FormInputLabelContainer,
+} from "./form-input.styles";
 
 export interface IFormInputProps {
   handleChange(event: React.ChangeEvent<HTMLInputElement>): void;
@@ -16,21 +20,16 @@ export default function FormInput({
   ...otherProps
 }: IFormInputProps) {
   return (
-    <div className="group">
-      <input
-        className="form-input"
+    <GroupContainer>
+      <FormInputContainer
         onChange={handleChange}
         {...otherProps}
-      ></input>
+      ></FormInputContainer>
       {label ? (
-        <label
-          className={`${
-            otherProps.value.length ? "shrink" : ""
-          } form-input-label`}
-        >
+        <FormInputLabelContainer length={otherProps.value.length}>
           {label}
-        </label>
+        </FormInputLabelContainer>
       ) : null}
-    </div>
+    </GroupContainer>
   );
 }

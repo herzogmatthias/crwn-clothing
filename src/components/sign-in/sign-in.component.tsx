@@ -1,9 +1,13 @@
 import * as React from "react";
 import { ISignInInfo } from "./ISignInInfo";
 import FormInput from "../form-input/form-input.component";
-import "./sign-in.styles.scss";
 import { CustomButton } from "../custom-button/custom-button.component";
 import { signInWithGoogle, auth } from "../../firebase/firebase.utils";
+import {
+  TitleContainer,
+  SignInContainer,
+  ButtonsContainer,
+} from "./sign-in.styles";
 
 export interface ISignInProps {}
 
@@ -29,8 +33,8 @@ export function SignIn(props: ISignInProps) {
   };
 
   return (
-    <div className="sign-in">
-      <h2>I already have an account</h2>
+    <SignInContainer>
+      <TitleContainer>I already have an account</TitleContainer>
       <span>Sign in with your email and password</span>
       <form onSubmit={_handleSubmit}>
         <FormInput
@@ -49,7 +53,7 @@ export function SignIn(props: ISignInProps) {
           handleChange={_handleChange}
           required
         ></FormInput>
-        <div className="buttons">
+        <ButtonsContainer>
           <CustomButton type="submit">Sign In</CustomButton>
           <CustomButton
             type="button"
@@ -58,8 +62,8 @@ export function SignIn(props: ISignInProps) {
           >
             Sign In with Google
           </CustomButton>
-        </div>
+        </ButtonsContainer>
       </form>
-    </div>
+    </SignInContainer>
   );
 }

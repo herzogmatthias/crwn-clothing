@@ -1,5 +1,4 @@
 import * as React from "react";
-import "./checkout.styles.scss";
 import { ICartItem } from "../../redux/cart/ICartItem";
 import { ConnectedProps, connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
@@ -9,7 +8,14 @@ import {
   selectCartTotal,
 } from "../../redux/cart/cart.selectors";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
-import StripeButton from "../../components/stripe-button/stripe-button.component";
+import {
+  CheckoutPageContainer,
+  CheckoutHeaderContainer,
+  HeaderBlockContainer,
+  TotalContainer,
+  TestWarningContainer,
+  StripeButtonContainer,
+} from "./Checkout.styles";
 
 interface ISelectorProps {
   cartItems: ICartItem[];
@@ -20,38 +26,38 @@ type ICheckoutPageProps = ConnectedProps<typeof connector>;
 
 function CheckoutPage({ cartItems, total }: ICheckoutPageProps) {
   return (
-    <div className="checkout-page">
-      <div className="checkout-header">
-        <div className="header-block">
+    <CheckoutPageContainer>
+      <CheckoutHeaderContainer>
+        <HeaderBlockContainer>
           <span>Product</span>
-        </div>
-        <div className="header-block">
+        </HeaderBlockContainer>
+        <HeaderBlockContainer>
           <span>Description</span>
-        </div>
-        <div className="header-block">
+        </HeaderBlockContainer>
+        <HeaderBlockContainer>
           <span>Quantity</span>
-        </div>
-        <div className="header-block">
+        </HeaderBlockContainer>
+        <HeaderBlockContainer>
           <span>Price</span>
-        </div>
-        <div className="header-block">
+        </HeaderBlockContainer>
+        <HeaderBlockContainer>
           <span>Remove</span>
-        </div>
-      </div>
+        </HeaderBlockContainer>
+      </CheckoutHeaderContainer>
       {cartItems.map((cartItem) => {
         return (
           <CheckoutItem cartItem={cartItem} key={cartItem.id}></CheckoutItem>
         );
       })}
-      <div className="total">
+      <TotalContainer>
         <span>TOTAL: ${total}</span>
-      </div>
-      <div className="test-warning">
+      </TotalContainer>
+      <TestWarningContainer>
         *Please use the following test credit card for payments*
         <br /> 4242 4242 4242 4242 - Exp: 01/21 - CVV: 123
-      </div>
-      <StripeButton price={total}></StripeButton>
-    </div>
+      </TestWarningContainer>
+      <StripeButtonContainer price={total}></StripeButtonContainer>
+    </CheckoutPageContainer>
   );
 }
 const mapDispatchToProps = {};

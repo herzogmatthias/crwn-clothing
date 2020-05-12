@@ -1,6 +1,12 @@
 import * as React from "react";
-import "./menu-item.styles.scss";
 import { RouteComponentProps, withRouter } from "react-router-dom";
+import {
+  MenuItemContainer,
+  BackgroundImageContainer,
+  ContentContainer,
+  TitleContainer,
+  SubtitleContainer,
+} from "./menu-item.styles";
 
 export interface IMenuItemProps extends RouteComponentProps<{}> {
   title: string;
@@ -18,21 +24,16 @@ function MenuItem({
   match,
 }: IMenuItemProps) {
   return (
-    <div
-      className={`${size} menu-item`}
+    <MenuItemContainer
+      size={size}
       onClick={() => history.push(`${match.url}${linkUrl}`)}
     >
-      <div
-        style={{
-          backgroundImage: `url(${imageUrl})`,
-        }}
-        className="background-image"
-      ></div>
-      <div className="content">
-        <h1 className="title">{title.toUpperCase()}</h1>
-        <span className="subtitle">SHOP NOW</span>
-      </div>
-    </div>
+      <BackgroundImageContainer url={imageUrl}></BackgroundImageContainer>
+      <ContentContainer className="content">
+        <TitleContainer className="title">{title.toUpperCase()}</TitleContainer>
+        <SubtitleContainer className="subtitle">SHOP NOW</SubtitleContainer>
+      </ContentContainer>
+    </MenuItemContainer>
   );
 }
 
