@@ -36,6 +36,15 @@ function App({ setCurrentUser, currentUser }: IAppProps) {
       } else {
         setCurrentUser(null);
       }
+      /*
+      addCollectionAndDocuments(
+        "collections",
+        collectionsArray.map(({ title, items }) => ({ title, items })) as Omit<
+          ICategory,
+          "id" | "routeName"
+        >[]
+      );
+      */
     });
   }, []);
   useEffect(() => {

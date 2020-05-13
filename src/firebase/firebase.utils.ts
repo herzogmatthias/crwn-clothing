@@ -1,6 +1,8 @@
 import firebase, { User } from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
+import { ICategory } from "../redux/shop/ICategory";
+import { ICategoryMap } from "../redux/shop/ICategoryMap";
 
 const config = {
   apiKey: "AIzaSyDmS2nLyIwB6Du5A9atFa1dhfX2zxe5qhQ",
@@ -42,6 +44,43 @@ const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({ prompt: "select_account" });
 export const signInWithGoogle = () => {
   auth.signInWithPopup(provider);
+};
+
+export const addCollectionAndDocuments = async (
+  collectionKey: string,
+  objectsToAdd: Omit<ICategory, "id" | "routeName">[]
+) => {
+  const collectionRef = firestore.collection(collectionKey);
+  console.log(collectionRef);
+
+  const batch = firestore.batch();
+  objectsToAdd.forEach((val, ind) => {
+    const newDocRef = collectionRef.doc();
+    batch.set(newDocRef, val);
+  });
+  return await batch.commit();
+};
+
+export const convertCollectionsSnapshotToMap = (
+  collections: firebase.firestore.QuerySnapshot<firebase.firestore.DocumentData>
+) => {
+  const transformedCollections = collections.docs.map((doc) => {
+    const { title, items } = doc.data();
+    return {
+      routeName: encodeURI(title.toLowerCase()),
+      id: doc.id,
+      title,
+      items,
+    };
+  }) as ICategory[];
+
+  return transformedCollections.reduce(
+    (accumulator: ICategoryMap, collection) => {
+      accumulator[collection.title.toLowerCase()] = collection;
+      return accumulator;
+    },
+    {}
+  );
 };
 
 export default firebase;
