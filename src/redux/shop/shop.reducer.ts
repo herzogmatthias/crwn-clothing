@@ -1,11 +1,10 @@
 import { IShopState } from "./IShopState";
 import { createReducer, PayloadAction } from "@reduxjs/toolkit";
-import { SHOP_DATA } from "./shop.data";
 import { updateCollections } from "./shop.actions";
 import { ICategoryMap } from "./ICategoryMap";
 
 const initialState: IShopState = {
-  collections: SHOP_DATA,
+  collections: null,
 };
 
 const shopReducer = createReducer(initialState, {

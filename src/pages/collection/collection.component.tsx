@@ -34,7 +34,7 @@ const mapStateToProps = (
   state: RootState,
   ownProps: RouteComponentProps<{ categoryId: string }>
 ) => ({
-  collection: selectCollection(ownProps.match.params.categoryId)(state),
+  collection: selectCollection(ownProps.match.params.categoryId)(state)!,
 });
 
 const connector = connect(mapStateToProps, {});
