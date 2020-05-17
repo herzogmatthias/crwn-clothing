@@ -3,6 +3,8 @@ import "firebase/firestore";
 import "firebase/auth";
 import { ICategory } from "../redux/shop/ICategory";
 import { ICategoryMap } from "../redux/shop/ICategoryMap";
+import { resolve } from "dns";
+import { IUserAuth } from "../IUserAuth";
 
 const config = {
   apiKey: "AIzaSyDmS2nLyIwB6Du5A9atFa1dhfX2zxe5qhQ",
@@ -40,10 +42,16 @@ firebase.initializeApp(config);
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: "select_account" });
-export const signInWithGoogle = () => {
-  auth.signInWithPopup(provider);
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: "select_account" });
+
+export const getCurrentUser = (): Promise<firebase.User | null> => {
+  return new Promise((res, rej) => {
+    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+      unsubscribe();
+      res(userAuth);
+    }, rej);
+  });
 };
 
 export const addCollectionAndDocuments = async (

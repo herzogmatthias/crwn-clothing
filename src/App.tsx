@@ -5,15 +5,13 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import ShopPage from "./pages/shop/shop.component";
 import Header from "./components/header/header.component";
 import { SignInAndSignUp } from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
-import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
-import { Unsubscribe } from "firebase";
 import { IUserAuth } from "./IUserAuth";
 import { connect, ConnectedProps } from "react-redux";
-import { setCurrentUser } from "./redux/user/user.actions";
 import { RootState } from "./redux/root-reducer";
 import { selectCurrentUser } from "./redux/user/user.selectors";
 import { createStructuredSelector } from "reselect";
 import CheckoutPage from "./pages/checkout/checkout.component";
+import { checkUserSession } from "./redux/user/user.actions";
 
 interface ISelectorProps {
   currentUser: IUserAuth | null;
@@ -21,22 +19,10 @@ interface ISelectorProps {
 
 type IAppProps = ConnectedProps<typeof connector>;
 
-function App({ setCurrentUser, currentUser }: IAppProps) {
-  let unsubscripeFromAuth: Unsubscribe;
+function App({ currentUser, checkUserSession }: IAppProps) {
   useEffect(() => {
-    unsubscripeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
-        userRef!.onSnapshot((snapShot) => {
-          setCurrentUser({
-            id: snapShot.id,
-            ...(snapShot.data() as IUserAuth),
-          });
-        });
-      } else {
-        setCurrentUser(null);
-      }
-      /*
+    checkUserSession();
+    /*
       addCollectionAndDocuments(
         "collections",
         collectionsArray.map(({ title, items }) => ({ title, items })) as Omit<
@@ -45,13 +31,8 @@ function App({ setCurrentUser, currentUser }: IAppProps) {
         >[]
       );
       */
-    });
   }, []);
-  useEffect(() => {
-    return () => {
-      unsubscripeFromAuth();
-    };
-  }, []);
+
   return (
     <div>
       <Header></Header>
@@ -79,7 +60,7 @@ const mapStateToProps = createStructuredSelector<RootState, ISelectorProps>({
 });
 
 const mapDispatchToProps = {
-  setCurrentUser: setCurrentUser,
+  checkUserSession: checkUserSession,
 };
 const connector = connect(mapStateToProps, mapDispatchToProps);
 export default connect(mapStateToProps, mapDispatchToProps)(App);

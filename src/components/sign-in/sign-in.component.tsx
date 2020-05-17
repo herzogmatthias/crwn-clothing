@@ -2,16 +2,20 @@ import * as React from "react";
 import { ISignInInfo } from "./ISignInInfo";
 import FormInput from "../form-input/form-input.component";
 import { CustomButton } from "../custom-button/custom-button.component";
-import { signInWithGoogle, auth } from "../../firebase/firebase.utils";
 import {
   TitleContainer,
   SignInContainer,
   ButtonsContainer,
 } from "./sign-in.styles";
+import {
+  googleSignInStart,
+  emailSignInStart,
+} from "../../redux/user/user.actions";
+import { connect, ConnectedProps } from "react-redux";
 
-export interface ISignInProps {}
+type ISignInProps = ConnectedProps<typeof connector>;
 
-export function SignIn(props: ISignInProps) {
+function SignIn({ googleSignInStart, emailSignInStart }: ISignInProps) {
   const [signInInfo, setSignInInfo] = React.useState<ISignInInfo>({
     email: "",
     password: "",
@@ -19,12 +23,7 @@ export function SignIn(props: ISignInProps) {
   const { email, password } = signInInfo;
   const _handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    try {
-      await auth.signInWithEmailAndPassword(email, password);
-      setSignInInfo({ email: "", password: "" });
-    } catch (error) {
-      console.log(error);
-    }
+    emailSignInStart({ email, password });
   };
 
   const _handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -58,7 +57,7 @@ export function SignIn(props: ISignInProps) {
           <CustomButton
             type="button"
             isGoogleSignIn
-            onClick={() => signInWithGoogle()}
+            onClick={googleSignInStart}
           >
             Sign In with Google
           </CustomButton>
@@ -67,3 +66,12 @@ export function SignIn(props: ISignInProps) {
     </SignInContainer>
   );
 }
+
+const mapDispatchToProps = {
+  googleSignInStart: googleSignInStart,
+  emailSignInStart: emailSignInStart,
+};
+
+const connector = connect(null, mapDispatchToProps);
+
+export default connect(null, mapDispatchToProps)(SignIn);
