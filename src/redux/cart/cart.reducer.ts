@@ -5,6 +5,7 @@ import {
   addItem,
   clearItemFromCart,
   removeItem,
+  clearCart,
 } from "./cart.actions";
 import { IShopItem } from "../shop/IShopItem";
 import { addItemToCart, removeItemFromCart } from "./cart.utils";
@@ -29,6 +30,9 @@ const cartReducer = createReducer(initialState, {
   },
   [removeItem.type]: (state, action: PayloadAction<ICartItem>) => {
     state.cartItems = removeItemFromCart(state.cartItems, action.payload);
+  },
+  [clearCart.type]: (state, action) => {
+    state.cartItems = [];
   },
 });
 

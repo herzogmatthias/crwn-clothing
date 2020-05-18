@@ -1,6 +1,5 @@
 import * as React from "react";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
-import { auth } from "../../firebase/firebase.utils";
 import { RootState } from "../../redux/root-reducer";
 import { ConnectedProps, connect } from "react-redux";
 import CartIcon from "../cart-icon/cart-icon.component";
@@ -15,6 +14,7 @@ import {
   OptionLink,
   OptionsContainer,
 } from "./header.styles";
+import { signOutStart } from "../../redux/user/user.actions";
 
 interface ISelectorProps {
   currentUser: null | IUserAuth;
@@ -23,7 +23,7 @@ interface ISelectorProps {
 
 type IHeaderProps = ConnectedProps<typeof connector>;
 
-function Header({ currentUser, hidden }: IHeaderProps) {
+function Header({ currentUser, hidden, signOutStart }: IHeaderProps) {
   return (
     <HeaderContainer>
       <LogoContainer to="/">
@@ -33,7 +33,7 @@ function Header({ currentUser, hidden }: IHeaderProps) {
         <OptionLink to="/shop">SHOP</OptionLink>
         <OptionLink to="/contact">CONTACT</OptionLink>
         {currentUser ? (
-          <OptionLink as="div" onClick={() => auth.signOut()}>
+          <OptionLink as="div" onClick={signOutStart}>
             SIGN OUT
           </OptionLink>
         ) : (
@@ -45,10 +45,14 @@ function Header({ currentUser, hidden }: IHeaderProps) {
     </HeaderContainer>
   );
 }
+const mapDispatchToProps = {
+  signOutStart: signOutStart,
+};
+
 const mapStateToProps = createStructuredSelector<RootState, ISelectorProps>({
   currentUser: selectCurrentUser,
   hidden: selectCartHidden,
 });
 
-const connector = connect(mapStateToProps, {});
-export default connect(mapStateToProps, {})(Header);
+const connector = connect(mapStateToProps, mapDispatchToProps);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

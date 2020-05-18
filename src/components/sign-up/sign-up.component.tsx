@@ -2,12 +2,13 @@ import * as React from "react";
 import { ISignUpInfo } from "./ISignUpInfo";
 import FormInput from "../form-input/form-input.component";
 import { CustomButton } from "../custom-button/custom-button.component";
-import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
 import { TitleContainer, SignUpContainer } from "./sign-up.styles";
+import { signUpStart } from "../../redux/user/user.actions";
+import { ConnectedProps, connect } from "react-redux";
 
-export interface ISignUpProps {}
+type ISignUpProps = ConnectedProps<typeof connector>;
 
-export default function SignUp(props: ISignUpProps) {
+function SignUp({ signUpStart }: ISignUpProps) {
   const [signUpInfo, setSignUpInfo] = React.useState<ISignUpInfo>({
     displayName: "",
     confirmPassword: "",
@@ -22,21 +23,7 @@ export default function SignUp(props: ISignUpProps) {
       alert("passwords don't match");
       return;
     }
-    try {
-      const { user } = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
-      await createUserProfileDocument(user, { displayName });
-      setSignUpInfo({
-        email: "",
-        displayName: "",
-        confirmPassword: "",
-        password: "",
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    signUpStart(signUpInfo);
   };
   const _handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = event.target;
@@ -84,3 +71,11 @@ export default function SignUp(props: ISignUpProps) {
     </SignUpContainer>
   );
 }
+
+const mapDispatchToProps = {
+  signUpStart: signUpStart,
+};
+
+const connector = connect(null, mapDispatchToProps);
+
+export default connect(null, mapDispatchToProps)(SignUp);

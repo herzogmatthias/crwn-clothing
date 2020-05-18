@@ -4,6 +4,7 @@ import {
   ADD_ITEM,
   CLEAR_ITEM_FROM_CART,
   REMOVE_ITEM,
+  CLEAR_CART,
 } from "./cart.types";
 import { withPayloadType } from "../genericActionPayloadType";
 import { IShopItem } from "../shop/IShopItem";
@@ -19,3 +20,5 @@ export const removeItem = createAction(
   REMOVE_ITEM,
   withPayloadType<ICartItem>()
 );
+
+export const clearCart = createAction(CLEAR_CART);

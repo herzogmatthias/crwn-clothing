@@ -1,6 +1,11 @@
 import { createReducer, PayloadAction } from "@reduxjs/toolkit";
 import { IUserState } from "./IUserState";
-import { signInSuccess, signInFailure } from "./user.actions";
+import {
+  signInSuccess,
+  signInFailure,
+  signOutFailure,
+  signOutSuccess,
+} from "./user.actions";
 import { IUserAuth } from "../../IUserAuth";
 
 const initialState: IUserState = {
@@ -15,6 +20,13 @@ const userReducer = createReducer(initialState, {
   },
   [signInFailure.type]: (state, action: PayloadAction<string>) => {
     state.error = action.payload;
+  },
+  [signOutFailure.type]: (state, action: PayloadAction<string>) => {
+    state.error = action.payload;
+  },
+  [signOutSuccess.type]: (state, action) => {
+    state.currentUser = null;
+    state.error = "";
   },
 });
 
