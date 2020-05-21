@@ -1,6 +1,5 @@
 import * as React from "react";
 import { ICartItem } from "../../providers/cart/ICartItem";
-import { connect } from "react-redux";
 import {
   NameContainer,
   QuantityContainer,
