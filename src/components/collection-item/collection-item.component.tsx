@@ -10,13 +10,15 @@ import {
   PriceContainer,
   CustomButtonContainer,
 } from "./collection-item.styles";
+import { CartContext } from "../../providers/cart/cart.provider";
 
-type ICollectionItemProps = ConnectedProps<typeof connector> & {
+interface ICollectionItemProps {
   item: IShopItem;
   className?: string;
-};
+}
 
-function CollectionItem({ item, addItem, className }: ICollectionItemProps) {
+function CollectionItem({ item, className }: ICollectionItemProps) {
+  const { addItem } = React.useContext(CartContext);
   return (
     <CollectionItemContainer className={className}>
       <ImageContainer imageUrl={item.imageUrl}></ImageContainer>
@@ -31,8 +33,4 @@ function CollectionItem({ item, addItem, className }: ICollectionItemProps) {
   );
 }
 
-const mapDispatchToProps = {
-  addItem: addItem,
-};
-const connector = connect(null, mapDispatchToProps);
-export default connect(null, mapDispatchToProps)(CollectionItem);
+export default CollectionItem;

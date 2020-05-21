@@ -35,3 +35,18 @@ export const removeItemFromCart = (
       : cartItem
   );
 };
+
+export const filterItemFromCart = (cartItems: ICartItem[], item: ICartItem) =>
+  cartItems.filter((cartItem) => cartItem.id !== item.id);
+
+export const getCartItemsCount = (cartItems: ICartItem[]) =>
+  cartItems.reduce(
+    (accumalatedQuantity, cartItem) => accumalatedQuantity + cartItem.quantity,
+    0
+  );
+
+export const getTotalPrice = (cartItems: ICartItem[]) =>
+  cartItems.reduce(
+    (totalCost, cartItem) => totalCost + cartItem.quantity * cartItem.price,
+    0
+  );

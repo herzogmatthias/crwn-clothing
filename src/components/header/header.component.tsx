@@ -1,12 +1,8 @@
 import * as React from "react";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import { auth } from "../../firebase/firebase.utils";
-import { RootState } from "../../redux/root-reducer";
-import { ConnectedProps, connect } from "react-redux";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
-import { selectCartHidden } from "../../redux/cart/cart.selectors";
-import { createStructuredSelector } from "reselect";
 import {
   HeaderContainer,
   LogoContainer,
@@ -14,23 +10,13 @@ import {
   OptionsContainer,
 } from "./header.styles";
 import CurrentUserContext from "../../contexts/current-user/current-user.context";
-import { constants } from "os";
-import CartContext from "../../contexts/cart/cart.context";
+import { CartContext } from "../../providers/cart/cart.provider";
 
-interface ISelectorProps {
-  hidden: boolean;
-}
-
-type IHeaderProps = ConnectedProps<typeof connector>;
+interface IHeaderProps {}
 
 function Header(props: IHeaderProps) {
   const currentUser = React.useContext(CurrentUserContext);
-
-  const [hidden, setHidden] = React.useState(true);
-
-  const toggleHidden = () => {
-    setHidden(!hidden);
-  };
+  const { hidden } = React.useContext(CartContext);
 
   return (
     <HeaderContainer>
@@ -47,17 +33,11 @@ function Header(props: IHeaderProps) {
         ) : (
           <OptionLink to="/signIn">SIGN IN</OptionLink>
         )}
-        <CartContext.Provider value={{ hidden, toggleHidden }}>
-          <CartIcon></CartIcon>
-        </CartContext.Provider>
+        <CartIcon></CartIcon>
       </OptionsContainer>
       {hidden ? null : <CartDropdown></CartDropdown>}
     </HeaderContainer>
   );
 }
-const mapStateToProps = createStructuredSelector<RootState, ISelectorProps>({
-  hidden: selectCartHidden,
-});
 
-const connector = connect(mapStateToProps, {});
-export default connect(mapStateToProps, {})(Header);
+export default Header;

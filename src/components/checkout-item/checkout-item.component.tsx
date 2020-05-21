@@ -1,11 +1,7 @@
 import * as React from "react";
 import { ICartItem } from "../../redux/cart/ICartItem";
-import { ConnectedProps, connect } from "react-redux";
-import {
-  clearItemFromCart,
-  addItem,
-  removeItem,
-} from "../../redux/cart/cart.actions";
+import { connect } from "react-redux";
+import { clearItemFromCart } from "../../redux/cart/cart.actions";
 import {
   NameContainer,
   QuantityContainer,
@@ -17,18 +13,17 @@ import {
   RemoveButtonContainer,
   CheckoutItemImage,
 } from "./checkout-item.styles";
+import { CartContext } from "../../providers/cart/cart.provider";
 
-type ICheckoutItemProps = ConnectedProps<typeof connector> & {
+interface ICheckoutItemProps {
   cartItem: ICartItem;
-};
+}
 
-function CheckoutItem({
-  cartItem,
-  clearItemFromCart,
-  addItem,
-  removeItem,
-}: ICheckoutItemProps) {
+function CheckoutItem({ cartItem }: ICheckoutItemProps) {
   const { name, price, imageUrl, quantity } = cartItem;
+  const { addItem, removeItem, clearItemFromCart } = React.useContext(
+    CartContext
+  );
   return (
     <CheckoutItemContainer>
       <ImageContainer>
@@ -52,10 +47,4 @@ function CheckoutItem({
   );
 }
 
-const mapDispatchToProps = {
-  clearItemFromCart: clearItemFromCart,
-  addItem: addItem,
-  removeItem: removeItem,
-};
-const connector = connect(null, mapDispatchToProps);
-export default connect(null, mapDispatchToProps)(CheckoutItem);
+export default CheckoutItem;
