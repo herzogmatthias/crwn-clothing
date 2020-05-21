@@ -14,6 +14,8 @@ import {
   OptionsContainer,
 } from "./header.styles";
 import CurrentUserContext from "../../contexts/current-user/current-user.context";
+import { constants } from "os";
+import CartContext from "../../contexts/cart/cart.context";
 
 interface ISelectorProps {
   hidden: boolean;
@@ -21,8 +23,15 @@ interface ISelectorProps {
 
 type IHeaderProps = ConnectedProps<typeof connector>;
 
-function Header({ hidden }: IHeaderProps) {
+function Header(props: IHeaderProps) {
   const currentUser = React.useContext(CurrentUserContext);
+
+  const [hidden, setHidden] = React.useState(true);
+
+  const toggleHidden = () => {
+    setHidden(!hidden);
+  };
+
   return (
     <HeaderContainer>
       <LogoContainer to="/">
@@ -38,7 +47,9 @@ function Header({ hidden }: IHeaderProps) {
         ) : (
           <OptionLink to="/signIn">SIGN IN</OptionLink>
         )}
-        <CartIcon></CartIcon>
+        <CartContext.Provider value={{ hidden, toggleHidden }}>
+          <CartIcon></CartIcon>
+        </CartContext.Provider>
       </OptionsContainer>
       {hidden ? null : <CartDropdown></CartDropdown>}
     </HeaderContainer>
