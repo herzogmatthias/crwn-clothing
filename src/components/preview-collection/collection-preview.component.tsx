@@ -6,16 +6,26 @@ import {
   CollectionPreviewContainer,
   PreviewContainer,
 } from "./collection-preview.styles";
+import { RouteComponentProps } from "react-router-dom";
 
-export interface ICollectionPreviewProps {
+export interface ICollectionPreviewProps extends RouteComponentProps {
   title: string;
   items: IShopItem[];
 }
 
-export function CollectionPreview({ title, items }: ICollectionPreviewProps) {
+export function CollectionPreview({
+  title,
+  items,
+  history,
+  match,
+}: ICollectionPreviewProps) {
   return (
     <CollectionPreviewContainer>
-      <TitleContainer>{title.toUpperCase()}</TitleContainer>
+      <TitleContainer
+        onClick={() => history.push(`${match.path}/${title.toLowerCase()}`)}
+      >
+        {title.toUpperCase()}
+      </TitleContainer>
       <PreviewContainer>
         {items
           .filter((itm, index) => index < 4)
