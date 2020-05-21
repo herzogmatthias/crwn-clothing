@@ -2,7 +2,7 @@ import * as React from "react";
 import { CollectionPreview } from "../preview-collection/collection-preview.component";
 import { CollectionOverviewContainer } from "./collection-overview.styles";
 import CollectionsContext from "../../contexts/collections/collections.context";
-import { ICategory } from "../../redux/shop/ICategory";
+import { ICategory } from "../../contexts/collections/ICategory";
 
 interface ICollectionsOverviewProps {}
 

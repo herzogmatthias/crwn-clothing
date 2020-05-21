@@ -1,7 +1,5 @@
 import * as React from "react";
-import { connect, ConnectedProps } from "react-redux";
-import { addItem } from "../../redux/cart/cart.actions";
-import { IShopItem } from "../../redux/shop/IShopItem";
+import { IShopItem } from "../../providers/cart/IShopItem";
 import {
   ImageContainer,
   CollectionItemContainer,

@@ -1,14 +1,14 @@
 import React, { createContext, useEffect } from "react";
 import { ICartProvider } from "./ICartProvider";
-import { ICartItem } from "../../redux/cart/ICartItem";
+import { ICartItem } from "./ICartItem";
 import {
   addItemToCart,
   removeItemFromCart,
   filterItemFromCart,
   getCartItemsCount,
   getTotalPrice,
-} from "../../redux/cart/cart.utils";
-import { IShopItem } from "../../redux/shop/IShopItem";
+} from "./cart.utils";
+import { IShopItem } from "./IShopItem";
 
 export const CartContext = createContext<ICartProvider>({
   hidden: true,

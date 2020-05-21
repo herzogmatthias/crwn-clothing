@@ -1,8 +1,4 @@
 import * as React from "react";
-import { ConnectedProps, connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import { RootState } from "../../redux/root-reducer";
-import { selectCartTotal } from "../../redux/cart/cart.selectors";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 import {
   CheckoutPageContainer,

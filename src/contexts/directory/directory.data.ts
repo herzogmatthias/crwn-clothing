@@ -1,4 +1,4 @@
-import { ISection } from "../../redux/directory/ISection";
+import { ISection } from "./ISection";
 
 export const DIRECTORY_DATA: ISection[] = [
   {

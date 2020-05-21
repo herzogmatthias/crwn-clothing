@@ -1,4 +1,4 @@
-import { IShopItem } from "../shop/IShopItem";
+import { IShopItem } from "./IShopItem";
 import { ICartItem } from "./ICartItem";
 
 export const addItemToCart = (

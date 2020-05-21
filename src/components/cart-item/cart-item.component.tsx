@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ICartItem } from "../../redux/cart/ICartItem";
+import { ICartItem } from "../../providers/cart/ICartItem";
 import {
   CartItemContainer,
   ImgContainer,

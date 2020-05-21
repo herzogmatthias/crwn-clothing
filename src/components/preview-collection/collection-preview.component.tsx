@@ -1,5 +1,5 @@
 import * as React from "react";
-import { IShopItem } from "../../redux/shop/IShopItem";
+import { IShopItem } from "../../providers/cart/IShopItem";
 import CollectionItem from "../collection-item/collection-item.component";
 import {
   TitleContainer,

@@ -1,5 +1,5 @@
-import { ICartItem } from "../../redux/cart/ICartItem";
-import { IShopItem } from "../../redux/shop/IShopItem";
+import { ICartItem } from "./ICartItem";
+import { IShopItem } from "./IShopItem";
 
 export interface ICartProvider {
   hidden: boolean;

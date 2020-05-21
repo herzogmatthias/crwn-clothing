@@ -1,7 +1,6 @@
 import * as React from "react";
-import { ICartItem } from "../../redux/cart/ICartItem";
+import { ICartItem } from "../../providers/cart/ICartItem";
 import { connect } from "react-redux";
-import { clearItemFromCart } from "../../redux/cart/cart.actions";
 import {
   NameContainer,
   QuantityContainer,
