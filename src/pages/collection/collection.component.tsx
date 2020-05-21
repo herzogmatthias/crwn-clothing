@@ -1,19 +1,18 @@
 import * as React from "react";
 import { RouteComponentProps } from "react-router-dom";
-import { connect, ConnectedProps } from "react-redux";
-import { RootState } from "../../redux/root-reducer";
-import { selectCollection } from "../../redux/shop/shop.selectors";
 import {
   TitleContainer,
   CollectionPageContainer,
   ItemsContainer,
   CollectionItemContainer,
 } from "./collection.styles";
+import CollectionsContext from "../../contexts/collections/collections.context";
 
-type ICollectionPageProps = ConnectedProps<typeof connector> &
-  RouteComponentProps<{ categoryId: string }>;
+type ICollectionPageProps = RouteComponentProps<{ categoryId: string }>;
 
-function CollectionPage({ collection }: ICollectionPageProps) {
+function CollectionPage({ match }: ICollectionPageProps) {
+  const collections = React.useContext(CollectionsContext);
+  const collection = collections[match.params.categoryId];
   const { title, items } = collection;
   return (
     <CollectionPageContainer>
@@ -30,12 +29,4 @@ function CollectionPage({ collection }: ICollectionPageProps) {
   );
 }
 
-const mapStateToProps = (
-  state: RootState,
-  ownProps: RouteComponentProps<{ categoryId: string }>
-) => ({
-  collection: selectCollection(ownProps.match.params.categoryId)(state),
-});
-
-const connector = connect(mapStateToProps, {});
-export default connect(mapStateToProps, {})(CollectionPage);
+export default CollectionPage;

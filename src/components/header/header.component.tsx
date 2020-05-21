@@ -5,25 +5,24 @@ import { RootState } from "../../redux/root-reducer";
 import { ConnectedProps, connect } from "react-redux";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
-import { selectCurrentUser } from "../../redux/user/user.selectors";
 import { selectCartHidden } from "../../redux/cart/cart.selectors";
 import { createStructuredSelector } from "reselect";
-import { IUserAuth } from "../../IUserAuth";
 import {
   HeaderContainer,
   LogoContainer,
   OptionLink,
   OptionsContainer,
 } from "./header.styles";
+import CurrentUserContext from "../../contexts/current-user/current-user.context";
 
 interface ISelectorProps {
-  currentUser: null | IUserAuth;
   hidden: boolean;
 }
 
 type IHeaderProps = ConnectedProps<typeof connector>;
 
-function Header({ currentUser, hidden }: IHeaderProps) {
+function Header({ hidden }: IHeaderProps) {
+  const currentUser = React.useContext(CurrentUserContext);
   return (
     <HeaderContainer>
       <LogoContainer to="/">
@@ -46,7 +45,6 @@ function Header({ currentUser, hidden }: IHeaderProps) {
   );
 }
 const mapStateToProps = createStructuredSelector<RootState, ISelectorProps>({
-  currentUser: selectCurrentUser,
   hidden: selectCartHidden,
 });
 

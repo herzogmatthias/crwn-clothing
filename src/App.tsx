@@ -8,20 +8,13 @@ import { SignInAndSignUp } from "./pages/sign-in-and-sign-up/sign-in-and-sign-up
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { Unsubscribe } from "firebase";
 import { IUserAuth } from "./IUserAuth";
-import { connect, ConnectedProps } from "react-redux";
-import { setCurrentUser } from "./redux/user/user.actions";
-import { RootState } from "./redux/root-reducer";
-import { selectCurrentUser } from "./redux/user/user.selectors";
-import { createStructuredSelector } from "reselect";
 import CheckoutPage from "./pages/checkout/checkout.component";
+import CurrentUserContext from "./contexts/current-user/current-user.context";
 
-interface ISelectorProps {
-  currentUser: IUserAuth | null;
-}
+interface IAppProps {}
 
-type IAppProps = ConnectedProps<typeof connector>;
-
-function App({ setCurrentUser, currentUser }: IAppProps) {
+function App(props: IAppProps) {
+  const [currentUser, setCurrentUser] = React.useState<IUserAuth | null>(null);
   let unsubscripeFromAuth: Unsubscribe;
   useEffect(() => {
     unsubscripeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
@@ -30,7 +23,7 @@ function App({ setCurrentUser, currentUser }: IAppProps) {
         userRef!.onSnapshot((snapShot) => {
           setCurrentUser({
             id: snapShot.id,
-            ...(snapShot.data() as IUserAuth),
+            ...(snapShot.data() as Omit<IUserAuth, "id">),
           });
         });
       } else {
@@ -45,7 +38,9 @@ function App({ setCurrentUser, currentUser }: IAppProps) {
   }, []);
   return (
     <div>
-      <Header></Header>
+      <CurrentUserContext.Provider value={currentUser}>
+        <Header></Header>
+      </CurrentUserContext.Provider>
       <Switch>
         <Route path="/shop" component={ShopPage}></Route>
         <Route exact path="/" component={HomePage}></Route>
@@ -65,12 +60,4 @@ function App({ setCurrentUser, currentUser }: IAppProps) {
   );
 }
 
-const mapStateToProps = createStructuredSelector<RootState, ISelectorProps>({
-  currentUser: selectCurrentUser,
-});
-
-const mapDispatchToProps = {
-  setCurrentUser: setCurrentUser,
-};
-const connector = connect(mapStateToProps, mapDispatchToProps);
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
