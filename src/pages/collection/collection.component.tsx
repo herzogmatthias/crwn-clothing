@@ -1,17 +1,15 @@
 import * as React from "react";
-import { RouteComponentProps } from "react-router-dom";
-import { connect, ConnectedProps } from "react-redux";
-import { RootState } from "../../redux/root-reducer";
-import { selectCollection } from "../../redux/shop/shop.selectors";
 import {
   TitleContainer,
   CollectionPageContainer,
   ItemsContainer,
   CollectionItemContainer,
 } from "./collection.styles";
+import { ICategory } from "../../redux/shop/ICategory";
 
-type ICollectionPageProps = ConnectedProps<typeof connector> &
-  RouteComponentProps<{ categoryId: string }>;
+interface ICollectionPageProps {
+  collection: ICategory;
+}
 
 function CollectionPage({ collection }: ICollectionPageProps) {
   const { title, items } = collection;
@@ -30,12 +28,4 @@ function CollectionPage({ collection }: ICollectionPageProps) {
   );
 }
 
-const mapStateToProps = (
-  state: RootState,
-  ownProps: RouteComponentProps<{ categoryId: string }>
-) => ({
-  collection: selectCollection(ownProps.match.params.categoryId)(state),
-});
-
-const connector = connect(mapStateToProps, {});
-export default connect(mapStateToProps, {})(CollectionPage);
+export default CollectionPage;

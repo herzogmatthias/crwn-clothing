@@ -6,14 +6,14 @@ import {
   CollectionPreviewContainer,
   PreviewContainer,
 } from "./collection-preview.styles";
-import { RouteComponentProps } from "react-router-dom";
+import { RouteComponentProps, withRouter } from "react-router-dom";
 
 export interface ICollectionPreviewProps extends RouteComponentProps {
   title: string;
   items: IShopItem[];
 }
 
-export function CollectionPreview({
+function CollectionPreview({
   title,
   items,
   history,
@@ -36,3 +36,5 @@ export function CollectionPreview({
     </CollectionPreviewContainer>
   );
 }
+
+export default withRouter(CollectionPreview);
