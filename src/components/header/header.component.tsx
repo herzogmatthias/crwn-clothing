@@ -3,10 +3,9 @@ import { ReactComponent as Logo } from "../../assets/crown.svg";
 import { auth } from "../../firebase/firebase.utils";
 import { RootState } from "../../redux/root-reducer";
 import { ConnectedProps, connect } from "react-redux";
-import CartIcon from "../cart-icon/cart-icon.component";
-import CartDropdown from "../cart-dropdown/cart-dropdown.component";
+import { default as CartIcon } from "../cart-icon/cart-icon.container";
+import { default as CartDropdown } from "../cart-dropdown/cart-dropdown.container";
 import { selectCurrentUser } from "../../redux/user/user.selectors";
-import { selectCartHidden } from "../../redux/cart/cart.selectors";
 import { createStructuredSelector } from "reselect";
 import { IUserAuth } from "../../IUserAuth";
 import {
@@ -15,15 +14,24 @@ import {
   OptionLink,
   OptionsContainer,
 } from "./header.styles";
+import { useQuery } from "react-apollo";
+import { GET_CART_HIDDEN } from "../../graphql/resolvers";
 
 interface ISelectorProps {
   currentUser: null | IUserAuth;
-  hidden: boolean;
 }
 
-type IHeaderProps = ConnectedProps<typeof connector>;
+type IHeaderProps = ConnectedProps<typeof connector> & {
+  hidden?: Boolean;
+};
 
 function Header({ currentUser, hidden }: IHeaderProps) {
+  /*
+  const { loading, data } = useQuery<{ cartHidden: boolean }, {}>(
+    GET_CART_HIDDEN
+  );
+*/
+  console.log(hidden);
   return (
     <HeaderContainer>
       <LogoContainer to="/">
@@ -47,7 +55,6 @@ function Header({ currentUser, hidden }: IHeaderProps) {
 }
 const mapStateToProps = createStructuredSelector<RootState, ISelectorProps>({
   currentUser: selectCurrentUser,
-  hidden: selectCartHidden,
 });
 
 const connector = connect(mapStateToProps, {});

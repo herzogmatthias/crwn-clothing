@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import CollectionItem from "../../components/collection-item/collection-item.component";
+import { default as CollectionItem } from "../../components/collection-item/collection-item.container";
 
 export const CollectionPageContainer = styled.div`
   display: flex;

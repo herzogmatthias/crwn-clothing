@@ -14,6 +14,9 @@ interface ISelectorProps {
 type IDirectoryProps = ConnectedProps<typeof connector>;
 
 function Directory({ sections }: IDirectoryProps) {
+  React.useEffect(() => {
+    console.log("Directory rerenders");
+  });
   return (
     <DirectoryMenuContainer>
       {sections.map(({ id, ...sectionProps }) => {

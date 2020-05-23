@@ -1,6 +1,4 @@
 import * as React from "react";
-import { connect, ConnectedProps } from "react-redux";
-import { addItem } from "../../redux/cart/cart.actions";
 import { IShopItem } from "../../redux/shop/IShopItem";
 import {
   ImageContainer,
@@ -11,9 +9,10 @@ import {
   CustomButtonContainer,
 } from "./collection-item.styles";
 
-type ICollectionItemProps = ConnectedProps<typeof connector> & {
+type ICollectionItemProps = {
   item: IShopItem;
   className?: string;
+  addItem(item: IShopItem): void;
 };
 
 function CollectionItem({ item, addItem, className }: ICollectionItemProps) {
@@ -31,8 +30,4 @@ function CollectionItem({ item, addItem, className }: ICollectionItemProps) {
   );
 }
 
-const mapDispatchToProps = {
-  addItem: addItem,
-};
-const connector = connect(null, mapDispatchToProps);
-export default connect(null, mapDispatchToProps)(CollectionItem);
+export default CollectionItem;

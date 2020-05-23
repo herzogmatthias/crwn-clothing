@@ -1,6 +1,6 @@
 import * as React from "react";
 import { IShopItem } from "../../redux/shop/IShopItem";
-import CollectionItem from "../collection-item/collection-item.component";
+import { default as CollectionItem } from "../collection-item/collection-item.container";
 import {
   TitleContainer,
   CollectionPreviewContainer,
