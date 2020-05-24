@@ -1,7 +1,7 @@
 import React from "react";
 import { TOGGLE_CART_HIDDEN } from "../../graphql/mutations";
 import { Mutation, Query } from "react-apollo";
-import { GET_CART_ITEMS } from "../../graphql/resolvers";
+import { GET_CART_ITEMS } from "../../graphql/queries";
 import { ICartItem } from "../../redux/cart/ICartItem";
 import { ApolloCurrentQueryResult } from "apollo-boost";
 import CartDropdown from "./cart-dropdown.component";

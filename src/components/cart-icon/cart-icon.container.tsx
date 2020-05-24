@@ -3,8 +3,8 @@ import React from "react";
 import { flowRight } from "lodash";
 import CartIcon from "./cart-icon.component";
 import { TOGGLE_CART_HIDDEN } from "../../graphql/mutations";
-import { GET_ITEM_COUNT } from "../../graphql/resolvers";
 import { ApolloCurrentQueryResult } from "apollo-boost";
+import { GET_ITEM_COUNT } from "../../graphql/queries";
 
 interface IWithGraphqlProps
   extends ApolloCurrentQueryResult<{ itemCount: number }> {

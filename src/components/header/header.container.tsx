@@ -1,5 +1,5 @@
 import { Query } from "react-apollo";
-import { GET_CART_HIDDEN } from "../../graphql/resolvers";
+import { GET_CART_HIDDEN } from "../../graphql/queries";
 import { ApolloCurrentQueryResult } from "apollo-boost";
 import React from "react";
 import Header from "./header.component";

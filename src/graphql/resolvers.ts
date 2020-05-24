@@ -1,5 +1,6 @@
 import { gql, Resolvers } from "apollo-boost";
 import { addItemToCart, getCartItemsCount } from "../redux/cart/cart.utils";
+import { GET_CART_HIDDEN, GET_CART_ITEMS, GET_ITEM_COUNT } from "./queries";
 
 export const typeDefs = gql`
   extend type Item {
@@ -9,24 +10,6 @@ export const typeDefs = gql`
   extend type Mutation {
     ToggleCartHidden: Boolean!
     AddItemToCart(item: Item!): [Item]!
-  }
-`;
-
-export const GET_CART_HIDDEN = gql`
-  {
-    cartHidden @client
-  }
-`;
-
-export const GET_CART_ITEMS = gql`
-  {
-    cartItems @client
-  }
-`;
-
-export const GET_ITEM_COUNT = gql`
-  {
-    itemCount @client
   }
 `;
 

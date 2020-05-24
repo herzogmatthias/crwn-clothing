@@ -6,7 +6,7 @@ import {
 } from "./cart-icon.styles";
 import { useMutation, useQuery } from "react-apollo";
 import { TOGGLE_CART_HIDDEN } from "../../graphql/mutations";
-import { GET_ITEM_COUNT } from "../../graphql/resolvers";
+import { GET_ITEM_COUNT } from "../../graphql/queries";
 
 interface ICartIconProps {
   toggleCartHidden?(): void;

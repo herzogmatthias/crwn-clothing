@@ -8,17 +8,21 @@ import {
   CartDropdownContainer,
   CartItemsContainer,
 } from "./cart-dropdown.styles";
+import { useMutation, useQuery } from "react-apollo";
+import { TOGGLE_CART_HIDDEN } from "../../graphql/mutations";
+import { GET_CART_ITEMS } from "../../graphql/queries";
 
 interface ICartDropdownProps extends RouteComponentProps {
-  cartItems: ICartItem[];
-  toggleCartHidden(): void;
+  cartItems?: ICartItem[];
+  toggleCartHidden?(): void;
 }
 
-function CartDropdown({
-  cartItems,
-  history,
-  toggleCartHidden,
-}: ICartDropdownProps) {
+function CartDropdown({ history }: ICartDropdownProps) {
+  const [toggleCartHidden] = useMutation<{ toggleCartHidden: () => {} }>(
+    TOGGLE_CART_HIDDEN
+  );
+  const { data } = useQuery<{ cartItems: ICartItem[] }>(GET_CART_ITEMS);
+  const { cartItems } = data!;
   return (
     <CartDropdownContainer className="cart-dropdown">
       <CartItemsContainer>
