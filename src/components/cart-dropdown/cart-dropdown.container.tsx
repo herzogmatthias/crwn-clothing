@@ -2,19 +2,15 @@ import React from "react";
 import { TOGGLE_CART_HIDDEN } from "../../graphql/mutations";
 import { Mutation, Query } from "react-apollo";
 import { GET_CART_ITEMS } from "../../graphql/queries";
-import { ICartItem } from "../../redux/cart/ICartItem";
-import { ApolloCurrentQueryResult } from "apollo-boost";
+import { ICartItem } from "../../graphql/ICartItem";
 import CartDropdown from "./cart-dropdown.component";
 
 const CartDropdownContainer = () => {
   return (
-    <Mutation mutation={TOGGLE_CART_HIDDEN}>
-      {(toggleCartHidden: any) => (
-        <Query query={GET_CART_ITEMS}>
-          {({
-            data,
-            loading,
-          }: ApolloCurrentQueryResult<{ cartItems: ICartItem[] }>) => {
+    <Mutation<{ toggleCartHidden: () => {} }, {}> mutation={TOGGLE_CART_HIDDEN}>
+      {(toggleCartHidden) => (
+        <Query<{ cartItems: ICartItem[] }, {}> query={GET_CART_ITEMS}>
+          {({ data, loading }) => {
             const { cartItems } = data!;
             return (
               <CartDropdown

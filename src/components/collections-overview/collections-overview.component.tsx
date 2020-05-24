@@ -1,6 +1,6 @@
 import * as React from "react";
 import { connect, ConnectedProps } from "react-redux";
-import { ICategory } from "../../redux/shop/ICategory";
+import { ICategory } from "../../graphql/ICategory";
 import CollectionPreview from "../preview-collection/collection-preview.component";
 import { CollectionOverviewContainer } from "./collections-overview.styles";
 

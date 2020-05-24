@@ -2,7 +2,7 @@ import React from "react";
 import { gql, ApolloCurrentQueryResult } from "apollo-boost";
 import { RouteComponentProps } from "react-router-dom";
 import { Query } from "react-apollo";
-import { ICategory } from "../../redux/shop/ICategory";
+import { ICategory } from "../../graphql/ICategory";
 import Spinner from "../../components/spinner/spinner.component";
 import CollectionPage from "./collection.component";
 import { GET_COLLECTION_BY_TITLE } from "../../graphql/queries";

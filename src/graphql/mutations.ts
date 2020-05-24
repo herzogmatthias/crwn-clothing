@@ -23,3 +23,9 @@ export const CLEAR_ITEM_FROM_CART = gql`
     clearItemFromCart(item: $item) @client
   }
 `;
+
+export const SET_CURRENT_USER = gql`
+  mutation SetCurrentUser($user: User!) {
+    setCurrentUser(user: $user) @client
+  }
+`;

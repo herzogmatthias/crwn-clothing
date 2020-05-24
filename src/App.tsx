@@ -8,36 +8,41 @@ import { SignInAndSignUp } from "./pages/sign-in-and-sign-up/sign-in-and-sign-up
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { Unsubscribe } from "firebase";
 import { IUserAuth } from "./IUserAuth";
-import { connect, ConnectedProps } from "react-redux";
-import { setCurrentUser } from "./redux/user/user.actions";
-import { RootState } from "./redux/root-reducer";
-import { selectCurrentUser } from "./redux/user/user.selectors";
-import { createStructuredSelector } from "reselect";
 import { default as CheckoutPage } from "./pages/checkout/checkout.component";
+import { useMutation, useQuery } from "react-apollo";
+import { SET_CURRENT_USER } from "./graphql/mutations";
+import { GET_CURRENT_USER } from "./graphql/queries";
 
-interface ISelectorProps {
-  currentUser: IUserAuth | null;
+interface IAppProps {
+  currentUser?: IUserAuth | null;
 }
 
-type IAppProps = ConnectedProps<typeof connector>;
-
-function App({ setCurrentUser, currentUser }: IAppProps) {
+function App(props: IAppProps) {
+  const [setCurrentUser] = useMutation<
+    { setCurrentUser: () => {} },
+    { user: IUserAuth | null }
+  >(SET_CURRENT_USER);
+  const { data } = useQuery<{ currentUser: IUserAuth | null }>(
+    GET_CURRENT_USER
+  );
+  const { currentUser } = data!;
   let unsubscripeFromAuth: Unsubscribe = () => {};
-  useEffect(() => {
-    console.log("I rerender");
-  });
   useEffect(() => {
     unsubscripeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
         userRef!.onSnapshot((snapShot) => {
           setCurrentUser({
-            id: snapShot.id,
-            ...(snapShot.data() as IUserAuth),
+            variables: {
+              user: {
+                id: snapShot.id,
+                ...(snapShot.data() as IUserAuth),
+              },
+            },
           });
         });
       } else {
-        setCurrentUser(null);
+        setCurrentUser({ variables: { user: userAuth } });
       }
     });
   }, [setCurrentUser]);
@@ -68,12 +73,4 @@ function App({ setCurrentUser, currentUser }: IAppProps) {
   );
 }
 
-const mapStateToProps = createStructuredSelector<RootState, ISelectorProps>({
-  currentUser: selectCurrentUser,
-});
-
-const mapDispatchToProps = {
-  setCurrentUser: setCurrentUser,
-};
-const connector = connect(mapStateToProps, mapDispatchToProps);
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

@@ -5,7 +5,7 @@ import {
   ItemsContainer,
   CollectionItemContainer,
 } from "./collection.styles";
-import { ICategory } from "../../redux/shop/ICategory";
+import { ICategory } from "../../graphql/ICategory";
 import { useQuery } from "react-apollo";
 import { RouteComponentProps } from "react-router-dom";
 import { GET_COLLECTION_BY_TITLE } from "../../graphql/queries";

@@ -1,6 +1,6 @@
 import * as React from "react";
 import CartItem from "../cart-item/cart-item.component";
-import { ICartItem } from "../../redux/cart/ICartItem";
+import { ICartItem } from "../../graphql/ICartItem";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import {
   CustomButtonContainer,

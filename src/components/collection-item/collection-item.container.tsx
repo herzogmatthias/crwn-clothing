@@ -1,5 +1,5 @@
 import React from "react";
-import { IShopItem } from "../../redux/shop/IShopItem";
+import { IShopItem } from "../../graphql/IShopItem";
 import { Mutation } from "react-apollo";
 import { ADD_ITEM_TO_CART } from "../../graphql/mutations";
 import CollectionItem from "./collection-item.component";

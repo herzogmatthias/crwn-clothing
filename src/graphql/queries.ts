@@ -24,6 +24,23 @@ export const GET_TOTAL = gql`
   }
 `;
 
+export const GET_SECTIONS = gql`
+  {
+    sections @client {
+      id
+      imageUrl
+      title
+      linkUrl
+    }
+  }
+`;
+
+export const GET_CURRENT_USER = gql`
+  {
+    currentUser @client
+  }
+`;
+
 export const GET_COLLECTION_BY_TITLE = gql`
   query getCollectionsByTitle($title: String!) {
     getCollectionsByTitle(title: $title) {

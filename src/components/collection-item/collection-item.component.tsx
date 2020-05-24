@@ -1,5 +1,5 @@
 import * as React from "react";
-import { IShopItem } from "../../redux/shop/IShopItem";
+import { IShopItem } from "../../graphql/IShopItem";
 import {
   ImageContainer,
   CollectionItemContainer,

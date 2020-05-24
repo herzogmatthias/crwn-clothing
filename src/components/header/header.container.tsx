@@ -1,18 +1,26 @@
 import { Query } from "react-apollo";
-import { GET_CART_HIDDEN } from "../../graphql/queries";
-import { ApolloCurrentQueryResult } from "apollo-boost";
+import { GET_CART_HIDDEN, GET_CURRENT_USER } from "../../graphql/queries";
 import React from "react";
 import Header from "./header.component";
-import { IHeaderType } from "../../graphql/types";
+import { IUserAuth } from "../../IUserAuth";
 
 const HeaderContainer = () => {
   console.log("Hello");
   return (
-    <Query query={GET_CART_HIDDEN}>
-      {({ data, loading }: ApolloCurrentQueryResult<IHeaderType>) => {
-        const { cartHidden } = data!;
-        if (loading) return <Header hidden></Header>;
-        return <Header hidden={cartHidden}></Header>;
+    <Query<{ currentUser: IUserAuth | null }> query={GET_CURRENT_USER}>
+      {(resCurrentUser) => {
+        return (
+          <Query<{ cartHidden: boolean }> query={GET_CART_HIDDEN}>
+            {(resCartHidden) => {
+              return (
+                <Header
+                  currentUser={resCurrentUser.data?.currentUser}
+                  hidden={resCartHidden.data?.cartHidden}
+                ></Header>
+              );
+            }}
+          </Query>
+        );
       }}
     </Query>
   );

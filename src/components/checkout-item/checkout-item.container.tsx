@@ -9,8 +9,8 @@ import {
 } from "../../graphql/mutations";
 import { ApolloCurrentQueryResult } from "apollo-boost";
 import { GET_ITEM_COUNT } from "../../graphql/queries";
-import { ICartItem } from "../../redux/cart/ICartItem";
-import { IShopItem } from "../../redux/shop/IShopItem";
+import { ICartItem } from "../../graphql/ICartItem";
+import { IShopItem } from "../../graphql/IShopItem";
 import CheckoutItem from "./checkout-item.component";
 
 interface IWithGraphqlProps {

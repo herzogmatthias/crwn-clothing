@@ -1,6 +1,6 @@
 import * as React from "react";
-import { ICartItem } from "../../redux/cart/ICartItem";
-import { default as CheckoutItem } from "../../components/checkout-item/checkout-item.container";
+import { ICartItem } from "../../graphql/ICartItem";
+import { default as CheckoutItem } from "../../components/checkout-item/checkout-item.component";
 import {
   CheckoutPageContainer,
   CheckoutHeaderContainer,

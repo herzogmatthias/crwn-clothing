@@ -1,34 +1,23 @@
 import * as React from "react";
-import { ISection } from "../../redux/directory/ISection";
+import { ISection } from "../../graphql/ISection";
 import MenuItem from "../menu-item/menu-item.components";
-import { connect, ConnectedProps } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import { RootState } from "../../redux/root-reducer";
-import { selectDirectorySections } from "../../redux/directory/directory.selectors";
 import { DirectoryMenuContainer } from "./directory.styles";
+import { useQuery } from "react-apollo";
+import { GET_SECTIONS } from "../../graphql/queries";
 
-interface ISelectorProps {
-  sections: ISection[];
+interface IDirectoryProps {
+  sections?: ISection[];
 }
 
-type IDirectoryProps = ConnectedProps<typeof connector>;
-
-function Directory({ sections }: IDirectoryProps) {
-  React.useEffect(() => {
-    console.log("Directory rerenders");
-  });
+function Directory(props: IDirectoryProps) {
+  const { data } = useQuery<{ sections: ISection[] }, {}>(GET_SECTIONS);
   return (
     <DirectoryMenuContainer>
-      {sections.map(({ id, ...sectionProps }) => {
+      {data!.sections.map(({ id, ...sectionProps }) => {
         return <MenuItem key={id} {...sectionProps}></MenuItem>;
       })}
     </DirectoryMenuContainer>
   );
 }
 
-const mapStateToProps = createStructuredSelector<RootState, ISelectorProps>({
-  sections: selectDirectorySections,
-});
-
-const connector = connect(mapStateToProps, {});
-export default connect(mapStateToProps, {})(Directory);
+export default Directory;

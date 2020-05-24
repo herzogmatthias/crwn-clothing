@@ -4,7 +4,7 @@ import CheckoutPage from "./checkout.component";
 import { flowRight } from "lodash";
 import { GET_TOTAL, GET_CART_ITEMS } from "../../graphql/queries";
 import { graphql } from "react-apollo";
-import { ICartItem } from "../../redux/cart/ICartItem";
+import { ICartItem } from "../../graphql/ICartItem";
 
 interface IWithGraphqlProps {
   totalQuery: ApolloCurrentQueryResult<{}> & { total: number };
