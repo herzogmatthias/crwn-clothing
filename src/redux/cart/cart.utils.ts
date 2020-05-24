@@ -42,3 +42,13 @@ export const getCartItemsCount = (cartItems: ICartItem[]) => {
     0
   );
 };
+
+export const getCartItemsTotal = (cartItems: ICartItem[]) => {
+  return cartItems.reduce(
+    (totalCost, cartItem) => totalCost + cartItem.quantity * cartItem.price,
+    0
+  );
+};
+
+export const filterItemFromCart = (cartItems: ICartItem[], item: ICartItem) =>
+  cartItems.filter((cartItem) => cartItem.id !== item.id);

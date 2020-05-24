@@ -17,3 +17,24 @@ export const GET_ITEM_COUNT = gql`
     itemCount @client
   }
 `;
+
+export const GET_TOTAL = gql`
+  {
+    total @client
+  }
+`;
+
+export const GET_COLLECTION_BY_TITLE = gql`
+  query getCollectionsByTitle($title: String!) {
+    getCollectionsByTitle(title: $title) {
+      id
+      title
+      items {
+        id
+        name
+        price
+        imageUrl
+      }
+    }
+  }
+`;

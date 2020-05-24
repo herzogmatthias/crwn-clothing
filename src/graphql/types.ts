@@ -8,4 +8,5 @@ export interface ICacheState {
   cartHidden: boolean;
   cartItems: ICartItem[];
   itemCount: number;
+  total: number;
 }

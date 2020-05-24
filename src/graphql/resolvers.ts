@@ -1,6 +1,17 @@
 import { gql, Resolvers } from "apollo-boost";
-import { addItemToCart, getCartItemsCount } from "../redux/cart/cart.utils";
-import { GET_CART_HIDDEN, GET_CART_ITEMS, GET_ITEM_COUNT } from "./queries";
+import {
+  addItemToCart,
+  getCartItemsCount,
+  getCartItemsTotal,
+  removeItemFromCart,
+  filterItemFromCart,
+} from "../redux/cart/cart.utils";
+import {
+  GET_CART_HIDDEN,
+  GET_CART_ITEMS,
+  GET_ITEM_COUNT,
+  GET_TOTAL,
+} from "./queries";
 
 export const typeDefs = gql`
   extend type Item {
@@ -32,6 +43,48 @@ export const resolvers: Resolvers = {
       cache.writeQuery({
         query: GET_ITEM_COUNT,
         data: { itemCount: getCartItemsCount(newCartItems) },
+      });
+
+      cache.writeQuery({
+        query: GET_TOTAL,
+        data: { total: getCartItemsTotal(newCartItems) },
+      });
+      cache.writeQuery({
+        query: GET_CART_ITEMS,
+        data: { cartItems: newCartItems },
+      });
+    },
+
+    removeItemFromCart: (_root, { item }, { cache }) => {
+      const { cartItems } = cache.readQuery({ query: GET_CART_ITEMS });
+      const newCartItems = removeItemFromCart(cartItems, item);
+
+      cache.writeQuery({
+        query: GET_ITEM_COUNT,
+        data: { itemCount: getCartItemsCount(newCartItems) },
+      });
+
+      cache.writeQuery({
+        query: GET_TOTAL,
+        data: { total: getCartItemsTotal(newCartItems) },
+      });
+      cache.writeQuery({
+        query: GET_CART_ITEMS,
+        data: { cartItems: newCartItems },
+      });
+    },
+    clearItemFromCart: (_root, { item }, { cache }) => {
+      const { cartItems } = cache.readQuery({ query: GET_CART_ITEMS });
+      const newCartItems = filterItemFromCart(cartItems, item);
+
+      cache.writeQuery({
+        query: GET_ITEM_COUNT,
+        data: { itemCount: getCartItemsCount(newCartItems) },
+      });
+
+      cache.writeQuery({
+        query: GET_TOTAL,
+        data: { total: getCartItemsTotal(newCartItems) },
       });
       cache.writeQuery({
         query: GET_CART_ITEMS,

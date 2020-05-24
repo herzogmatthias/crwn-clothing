@@ -1,11 +1,5 @@
 import * as React from "react";
 import { ICartItem } from "../../redux/cart/ICartItem";
-import { ConnectedProps, connect } from "react-redux";
-import {
-  clearItemFromCart,
-  addItem,
-  removeItem,
-} from "../../redux/cart/cart.actions";
 import {
   NameContainer,
   QuantityContainer,
@@ -17,10 +11,14 @@ import {
   RemoveButtonContainer,
   CheckoutItemImage,
 } from "./checkout-item.styles";
+import { IShopItem } from "../../redux/shop/IShopItem";
 
-type ICheckoutItemProps = ConnectedProps<typeof connector> & {
+interface ICheckoutItemProps {
   cartItem: ICartItem;
-};
+  clearItemFromCart(item: ICartItem): void;
+  addItem(item: IShopItem): void;
+  removeItem(item: ICartItem): void;
+}
 
 function CheckoutItem({
   cartItem,
@@ -52,10 +50,4 @@ function CheckoutItem({
   );
 }
 
-const mapDispatchToProps = {
-  clearItemFromCart: clearItemFromCart,
-  addItem: addItem,
-  removeItem: removeItem,
-};
-const connector = connect(null, mapDispatchToProps);
-export default connect(null, mapDispatchToProps)(CheckoutItem);
+export default CheckoutItem;

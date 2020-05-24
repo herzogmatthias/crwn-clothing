@@ -24,9 +24,9 @@ client.writeData<ICacheState>({
     cartHidden: true,
     cartItems: [],
     itemCount: 0,
+    total: 0,
   },
 });
-console.log("Index new");
 ReactDOM.render(
   <ApolloProvider client={client}>
     <Provider store={store}>

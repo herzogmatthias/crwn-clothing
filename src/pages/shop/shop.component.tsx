@@ -1,7 +1,7 @@
 import * as React from "react";
 import { default as CollectionsOverview } from "../../components/collections-overview/collections-overview.container";
 import { Route, RouteComponentProps } from "react-router-dom";
-import { default as CollectionPage } from "../collection/collection.container";
+import { default as CollectionPage } from "../collection/collection.component";
 
 interface IShopPageProps extends RouteComponentProps {}
 

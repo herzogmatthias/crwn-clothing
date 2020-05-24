@@ -5,30 +5,16 @@ import { Query } from "react-apollo";
 import { ICategory } from "../../redux/shop/ICategory";
 import Spinner from "../../components/spinner/spinner.component";
 import CollectionPage from "./collection.component";
-
-const GET_COLLECTION_BY_TITLE = gql`
-  query getCollectionsByTitle($title: String!) {
-    getCollectionsByTitle(title: $title) {
-      id
-      title
-      items {
-        id
-        name
-        price
-        imageUrl
-      }
-    }
-  }
-`;
+import { GET_COLLECTION_BY_TITLE } from "../../graphql/queries";
 
 interface ICollectionPageContainerProps
   extends RouteComponentProps<{ categoryId: string }> {}
 
-const CollectionPageContainer = ({ match }: ICollectionPageContainerProps) => {
+const CollectionPageContainer = (props: ICollectionPageContainerProps) => {
   return (
     <Query
       query={GET_COLLECTION_BY_TITLE}
-      variables={{ title: match.params.categoryId }}
+      variables={{ title: props.match.params.categoryId }}
     >
       {({
         loading,
@@ -38,7 +24,10 @@ const CollectionPageContainer = ({ match }: ICollectionPageContainerProps) => {
         else {
           const { getCollectionsByTitle } = data!;
           return (
-            <CollectionPage collection={getCollectionsByTitle}></CollectionPage>
+            <CollectionPage
+              {...props}
+              collection={getCollectionsByTitle}
+            ></CollectionPage>
           );
         }
       }}

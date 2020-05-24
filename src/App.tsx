@@ -13,7 +13,7 @@ import { setCurrentUser } from "./redux/user/user.actions";
 import { RootState } from "./redux/root-reducer";
 import { selectCurrentUser } from "./redux/user/user.selectors";
 import { createStructuredSelector } from "reselect";
-import CheckoutPage from "./pages/checkout/checkout.component";
+import { default as CheckoutPage } from "./pages/checkout/checkout.component";
 
 interface ISelectorProps {
   currentUser: IUserAuth | null;

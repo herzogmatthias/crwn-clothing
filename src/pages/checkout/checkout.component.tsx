@@ -1,13 +1,6 @@
 import * as React from "react";
 import { ICartItem } from "../../redux/cart/ICartItem";
-import { ConnectedProps, connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import { RootState } from "../../redux/root-reducer";
-import {
-  selectCartItems,
-  selectCartTotal,
-} from "../../redux/cart/cart.selectors";
-import CheckoutItem from "../../components/checkout-item/checkout-item.component";
+import { default as CheckoutItem } from "../../components/checkout-item/checkout-item.container";
 import {
   CheckoutPageContainer,
   CheckoutHeaderContainer,
@@ -16,15 +9,19 @@ import {
   TestWarningContainer,
   StripeButtonContainer,
 } from "./Checkout.styles";
+import { useQuery } from "react-apollo";
+import { GET_TOTAL, GET_CART_ITEMS } from "../../graphql/queries";
 
-interface ISelectorProps {
-  cartItems: ICartItem[];
-  total: number;
+interface ICheckoutPageProps {
+  cartItems?: ICartItem[];
+  total?: number;
 }
 
-type ICheckoutPageProps = ConnectedProps<typeof connector>;
-
-function CheckoutPage({ cartItems, total }: ICheckoutPageProps) {
+function CheckoutPage(props: ICheckoutPageProps) {
+  const totalQuery = useQuery<{ total: number }>(GET_TOTAL);
+  const cartItemsQuery = useQuery<{ cartItems: ICartItem[] }>(GET_CART_ITEMS);
+  const { total } = totalQuery.data!;
+  const { cartItems } = cartItemsQuery.data!;
   return (
     <CheckoutPageContainer>
       <CheckoutHeaderContainer>
@@ -44,7 +41,7 @@ function CheckoutPage({ cartItems, total }: ICheckoutPageProps) {
           <span>Remove</span>
         </HeaderBlockContainer>
       </CheckoutHeaderContainer>
-      {cartItems.map((cartItem) => {
+      {cartItems!.map((cartItem) => {
         return (
           <CheckoutItem cartItem={cartItem} key={cartItem.id}></CheckoutItem>
         );
@@ -56,16 +53,9 @@ function CheckoutPage({ cartItems, total }: ICheckoutPageProps) {
         *Please use the following test credit card for payments*
         <br /> 4242 4242 4242 4242 - Exp: 01/21 - CVV: 123
       </TestWarningContainer>
-      <StripeButtonContainer price={total}></StripeButtonContainer>
+      <StripeButtonContainer price={total!}></StripeButtonContainer>
     </CheckoutPageContainer>
   );
 }
-const mapDispatchToProps = {};
 
-const mapStateToProps = createStructuredSelector<RootState, ISelectorProps>({
-  cartItems: selectCartItems,
-  total: selectCartTotal,
-});
-
-const connector = connect(mapStateToProps, mapDispatchToProps);
-export default connect(mapStateToProps, mapDispatchToProps)(CheckoutPage);
+export default CheckoutPage;
