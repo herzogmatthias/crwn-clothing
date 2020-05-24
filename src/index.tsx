@@ -23,6 +23,7 @@ client.writeData<ICacheState>({
   data: {
     cartHidden: true,
     cartItems: [],
+    itemCount: 0,
   },
 });
 console.log("Index new");

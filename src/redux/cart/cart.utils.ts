@@ -35,3 +35,10 @@ export const removeItemFromCart = (
       : cartItem
   );
 };
+
+export const getCartItemsCount = (cartItems: ICartItem[]) => {
+  return cartItems.reduce(
+    (accumalatedQuantity, cartItem) => accumalatedQuantity + cartItem.quantity,
+    0
+  );
+};

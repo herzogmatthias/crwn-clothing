@@ -1,43 +1,30 @@
 import * as React from "react";
-import { ConnectedProps, connect } from "react-redux";
-import { RootState } from "../../redux/root-reducer";
-import { selectCartItemsCount } from "../../redux/cart/cart.selectors";
-import { createStructuredSelector } from "reselect";
 import {
   CartIconContainer,
   ShoppingIconContainer,
   ItemCountContainer,
 } from "./cart-icon.styles";
-import { useMutation } from "react-apollo";
+import { useMutation, useQuery } from "react-apollo";
 import { TOGGLE_CART_HIDDEN } from "../../graphql/mutations";
+import { GET_ITEM_COUNT } from "../../graphql/resolvers";
 
-interface ISelectorProps {
-  itemCount: number;
+interface ICartIconProps {
+  toggleCartHidden?(): void;
+  itemCount?: number;
 }
 
-type ICartIconProps = ConnectedProps<typeof connector> & {
-  toggleCartHidden?(): void;
-};
-
-function CartIcon({ itemCount, toggleCartHidden }: ICartIconProps) {
-  /*
-  const [toggleCartHidden, { error, data }] = useMutation<{}, {}>(
+function CartIcon(props: ICartIconProps) {
+  const [toggleCartHidden] = useMutation<{ toggleCartHidden: () => {} }, {}>(
     TOGGLE_CART_HIDDEN
   );
-  console.log(data);
-*/
-  //console.log(toggleCartHidden!());
+  const { data, error } = useQuery<{ itemCount: number }>(GET_ITEM_COUNT);
+
   return (
     <CartIconContainer onClick={() => toggleCartHidden!()}>
       <ShoppingIconContainer></ShoppingIconContainer>
-      <ItemCountContainer>{itemCount}</ItemCountContainer>
+      <ItemCountContainer>{data!.itemCount}</ItemCountContainer>
     </CartIconContainer>
   );
 }
 
-const mapStateToProps = createStructuredSelector<RootState, ISelectorProps>({
-  itemCount: selectCartItemsCount,
-});
-
-const connector = connect(mapStateToProps, {});
-export default connect(mapStateToProps, {})(CartIcon);
+export default CartIcon;
