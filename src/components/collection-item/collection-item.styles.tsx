@@ -12,6 +12,9 @@ export const CollectionItemContainer = styled.div`
   height: 350px;
   align-items: center;
   position: relative;
+  @media screen and (max-width: 800px) {
+    width: 40vw;
+  }
 `;
 
 export const ImageContainer = styled.div`
@@ -24,6 +27,9 @@ export const ImageContainer = styled.div`
     `url(${props.imageUrl})`};
   ${CollectionItemContainer}:hover & {
     opacity: 0.8;
+    @media screen and (max-width: 800px) {
+      opacity: unset;
+    }
   }
 `;
 export const CollectionFooterContainer = styled.div`
@@ -48,8 +54,17 @@ export const CustomButtonContainer = styled(CustomButton)`
   position: absolute;
   top: 255px;
   display: none;
+  @media screen and (max-width: 800px) {
+    opacity: 0.9;
+    display: block;
+    min-width: unset;
+    padding: 0 10px;
+  }
   ${CollectionItemContainer}:hover & {
     opacity: 0.85;
     display: flex;
+    @media screen and (max-width: 800px) {
+      opacity: unset;
+    }
   }
 `;

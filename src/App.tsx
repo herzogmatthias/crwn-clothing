@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "./App.css";
 import HomePage from "./pages/homepage/homepage.component";
 import { Route, Switch, Redirect } from "react-router-dom";
 import ShopPage from "./pages/shop/shop.component";
@@ -12,6 +11,7 @@ import { selectCurrentUser } from "./redux/user/user.selectors";
 import { createStructuredSelector } from "reselect";
 import CheckoutPage from "./pages/checkout/checkout.component";
 import { checkUserSession } from "./redux/user/user.actions";
+import { GlobalStyle } from "./global.styles";
 
 interface ISelectorProps {
   currentUser: IUserAuth | null;
@@ -35,6 +35,7 @@ function App({ currentUser, checkUserSession }: IAppProps) {
 
   return (
     <div>
+      <GlobalStyle></GlobalStyle>
       <Header></Header>
       <Switch>
         <Route path="/shop" component={ShopPage}></Route>
