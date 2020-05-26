@@ -5,7 +5,7 @@ import { SignInAndSignUpContainer } from "./sign-in-and-sign-up.styles";
 
 export interface ISignInAndSignUpProps {}
 
-export function SignInAndSignUp(props: ISignInAndSignUpProps) {
+export default function SignInAndSignUp(props: ISignInAndSignUpProps) {
   return (
     <SignInAndSignUpContainer>
       <SignIn></SignIn>

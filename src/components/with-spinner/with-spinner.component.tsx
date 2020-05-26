@@ -1,5 +1,5 @@
 import * as React from "react";
-import { SpinnerOverlay, SpinnerContainer } from "./with-spinner.styles";
+import Spinner from "../spinner/spinner.component";
 
 export interface IWithSpinnerProps {
   isLoading: boolean;
@@ -10,9 +10,7 @@ const WithSpinner = <P extends object>(
 ) => ({ isLoading, ...otherProps }: IWithSpinnerProps & P) => {
   console.log(isLoading);
   return isLoading ? (
-    <SpinnerOverlay>
-      <SpinnerContainer></SpinnerContainer>
-    </SpinnerOverlay>
+    <Spinner></Spinner>
   ) : (
     <WrappedComponent {...(otherProps as P)} />
   );
