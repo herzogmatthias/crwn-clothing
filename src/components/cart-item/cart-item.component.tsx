@@ -11,7 +11,7 @@ export interface ICartItemProps {
   item: ICartItem;
 }
 
-export default function CartItem({
+function CartItem({
   item: { imageUrl, price, name, quantity },
 }: ICartItemProps) {
   return (
@@ -26,3 +26,5 @@ export default function CartItem({
     </CartItemContainer>
   );
 }
+
+export default React.memo(CartItem);
