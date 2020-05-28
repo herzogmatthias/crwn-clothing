@@ -3,3 +3,7 @@ export const ADD_ITEM = "ADD_ITEM";
 export const CLEAR_ITEM_FROM_CART = "CLEAR_ITEM_FROM_CART";
 export const REMOVE_ITEM = "REMOVE_ITEM";
 export const CLEAR_CART = "CLEAR_CART";
+export const GET_CART_START = "GET_CART_START";
+export const GET_CART_SUCCESS = "GET_CART_SUCCESS";
+export const GET_CART_FAILURE = "GET_CART_FAILURE";
+export const UPDATE_CART_FAILURE = "UPDATE_CART_FAILURE";

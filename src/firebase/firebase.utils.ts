@@ -37,6 +37,19 @@ export const createUserProfileDocument = async (
   return userRef;
 };
 
+export const getOrCreateDocumentCartForUser = async (uuid: string) => {
+  const cartRef = firestore.doc(`carts/${uuid}`);
+  const snapshot = await cartRef.get();
+  if (!snapshot.exists) {
+    try {
+      await cartRef.set({ items: [] });
+    } catch (error) {
+      console.log("error creating cart", error.message);
+    }
+  }
+  return cartRef;
+};
+
 firebase.initializeApp(config);
 
 export const auth = firebase.auth();

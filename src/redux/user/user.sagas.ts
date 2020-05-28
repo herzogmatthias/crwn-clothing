@@ -23,15 +23,17 @@ import {
   signUpSuccess,
   signUpFailure,
 } from "./user.actions";
+import { getCartStart } from "../cart/cart.actions";
 
 type EmailSignIn = ReturnType<typeof emailSignInStart>;
 type SignUp = ReturnType<typeof signUpStart>;
 
-export function* getSnapshottFromUserAuth(userAuth: any) {
+export function* getSnapshotFromUserAuth(userAuth: any) {
   try {
     const userRef = yield call(createUserProfileDocument, userAuth);
     const userSnapshot = yield userRef.get();
     yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
+    yield put(getCartStart(userSnapshot.id));
   } catch (err) {
     yield put(signInFailure(err.message));
   }
@@ -40,7 +42,7 @@ export function* getSnapshottFromUserAuth(userAuth: any) {
 export function* signInWithGoogle() {
   try {
     const { user } = yield auth.signInWithPopup(googleProvider);
-    yield getSnapshottFromUserAuth(user);
+    yield getSnapshotFromUserAuth(user);
   } catch (err) {
     yield put(signInFailure(err.message));
   }
@@ -51,7 +53,7 @@ export function* signInWithEmail({
 }: EmailSignIn) {
   try {
     const { user } = yield auth.signInWithEmailAndPassword(email, password);
-    yield getSnapshottFromUserAuth(user);
+    yield getSnapshotFromUserAuth(user);
   } catch (err) {
     yield put(signInFailure(err.message));
   }
@@ -81,7 +83,7 @@ export function* isUserAuthenticated() {
   try {
     const userAuth = yield getCurrentUser();
     if (!userAuth) return;
-    yield getSnapshottFromUserAuth(userAuth);
+    yield getSnapshotFromUserAuth(userAuth);
   } catch (err) {
     yield signInFailure(err.message);
   }

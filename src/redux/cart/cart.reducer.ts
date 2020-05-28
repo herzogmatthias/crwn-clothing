@@ -6,6 +6,9 @@ import {
   clearItemFromCart,
   removeItem,
   clearCart,
+  getCartFailure,
+  getCartSuccess,
+  updateCartFailure,
 } from "./cart.actions";
 import { IShopItem } from "../shop/IShopItem";
 import { addItemToCart, removeItemFromCart } from "./cart.utils";
@@ -14,6 +17,7 @@ import { ICartItem } from "./ICartItem";
 const initialState: ICartState = {
   hidden: true,
   cartItems: [],
+  error: "",
 };
 
 const cartReducer = createReducer(initialState, {
@@ -33,6 +37,16 @@ const cartReducer = createReducer(initialState, {
   },
   [clearCart.type]: (state, action) => {
     state.cartItems = [];
+  },
+  [getCartSuccess.type]: (state, action: PayloadAction<ICartItem[]>) => {
+    state.cartItems = action.payload;
+    state.error = "";
+  },
+  [getCartFailure.type]: (state, action: PayloadAction<string>) => {
+    state.error = action.payload;
+  },
+  [updateCartFailure.type]: (state, action: PayloadAction<string>) => {
+    state.error = action.payload;
   },
 });
 
