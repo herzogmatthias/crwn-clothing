@@ -14,7 +14,7 @@ import { IShopItem } from "../shop/IShopItem";
 import { addItemToCart, removeItemFromCart } from "./cart.utils";
 import { ICartItem } from "./ICartItem";
 
-const initialState: ICartState = {
+export const initialState: ICartState = {
   hidden: true,
   cartItems: [],
   error: "",

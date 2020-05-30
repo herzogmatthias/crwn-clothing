@@ -5,10 +5,11 @@ import {
   signInFailure,
   signOutFailure,
   signOutSuccess,
+  signUpFailure,
 } from "./user.actions";
 import { IUserAuth } from "../../IUserAuth";
 
-const initialState: IUserState = {
+export const initialState: IUserState = {
   currentUser: null,
   error: "",
 };
@@ -27,6 +28,9 @@ const userReducer = createReducer(initialState, {
   [signOutSuccess.type]: (state, action) => {
     state.currentUser = null;
     state.error = "";
+  },
+  [signUpFailure.type]: (state, action: PayloadAction<string>) => {
+    state.error = action.payload;
   },
 });
 

@@ -7,7 +7,7 @@ import {
   fetchCollectionsFailure,
 } from "./shop.actions";
 
-const initialState: IShopState = {
+export const initialState: IShopState = {
   collections: null,
   isFetching: false,
   errorMessage: "",

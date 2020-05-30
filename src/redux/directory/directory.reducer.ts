@@ -1,7 +1,7 @@
 import { IDirectoryState } from "./IDirectoryState";
 import { createReducer } from "@reduxjs/toolkit";
 
-const initialState: IDirectoryState = {
+export const initialState: IDirectoryState = {
   sections: [
     {
       title: "hats",
