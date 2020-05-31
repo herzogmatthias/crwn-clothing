@@ -24,7 +24,6 @@ export function* fetchCollectionAsync() {
 }
 
 export function* onfetchCollectionsStart() {
-  console.log("start fetching");
   yield takeLatest(FETCH_COLLECTIONS_START, fetchCollectionAsync);
 }
 

@@ -34,10 +34,7 @@ export const signInFailure = createAction(
 
 export const signOutStart = createAction(SIGN_OUT_START);
 export const signOutSuccess = createAction(SIGN_OUT_SUCCESS);
-export const signOutFailure = createAction(
-  SIGN_OUT_FAILURE,
-  withPayloadType<string>()
-);
+export const signOutFailure = createAction<string>(SIGN_OUT_FAILURE);
 
 export const signUpStart = createAction(
   SIGN_UP_START,

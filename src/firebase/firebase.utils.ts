@@ -83,8 +83,11 @@ export const addCollectionAndDocuments = async (
 };
 
 export const convertCollectionsSnapshotToMap = (
-  collections: firebase.firestore.QuerySnapshot<firebase.firestore.DocumentData>
+  collections: firebase.firestore.QuerySnapshot<
+    firebase.firestore.DocumentData
+  > | null
 ) => {
+  if (collections === null) return undefined;
   const transformedCollections = collections.docs.map((doc) => {
     const { title, items } = doc.data();
     return {
