@@ -39,6 +39,10 @@ export function* updateCart() {
         currentUser.id
       );
       const cartItems = yield select(selectCartItems);
+
+      console.log(cartRef);
+
+      console.log(cartRef);
       yield cartRef.update({ items: cartItems });
     } catch (error) {
       yield put(updateCartFailure(error.message));

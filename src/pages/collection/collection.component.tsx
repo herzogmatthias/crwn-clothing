@@ -10,11 +10,11 @@ import {
   CollectionItemContainer,
 } from "./collection.styles";
 
-type ICollectionPageProps = ConnectedProps<typeof connector> &
+export type ICollectionPageProps = ConnectedProps<typeof connector> &
   RouteComponentProps<{ categoryId: string }>;
 
-function CollectionPage({ collection }: ICollectionPageProps) {
-  const { title, items } = collection;
+export function CollectionPage({ collection }: Partial<ICollectionPageProps>) {
+  const { title, items } = collection!;
   return (
     <CollectionPageContainer>
       <TitleContainer>{title}</TitleContainer>

@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CollectionPage should render the CollectionPage component 1`] = `
+<styled.div>
+  <styled.h2>
+    Test
+  </styled.h2>
+  <styled.div>
+    <Styled(Connect(CollectionItem))
+      item={
+        Object {
+          "id": 1,
+          "imageUrl": "asdfsd",
+          "name": "hat",
+          "price": 23,
+        }
+      }
+      key="1"
+    />
+    <Styled(Connect(CollectionItem))
+      item={
+        Object {
+          "id": 2,
+          "imageUrl": "asdfsd",
+          "name": "trousers",
+          "price": 23,
+        }
+      }
+      key="2"
+    />
+    <Styled(Connect(CollectionItem))
+      item={
+        Object {
+          "id": 3,
+          "imageUrl": "asdfsd",
+          "name": "tshirt",
+          "price": 23,
+        }
+      }
+      key="3"
+    />
+  </styled.div>
+</styled.div>
+`;

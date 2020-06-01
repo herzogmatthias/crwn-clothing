@@ -103,9 +103,7 @@ describe("sign out saga", () => {
   });
 
   test("call signOutFailure on error", () => {
-    const newGenerator = signOut();
-    newGenerator.next();
-    expect(newGenerator.throw({ message: "error" }).value).toEqual(
+    expect(generator.throw({ message: "error" }).value).toEqual(
       put(signOutFailure("error"))
     );
   });
@@ -207,8 +205,7 @@ describe("get snapshot from userAuth", () => {
     );
   });
   test("call onSignInFailure on Error", () => {
-    const newGen = generator.clone();
-    expect(newGen.throw!({ message: "error" }).value).toEqual(
+    expect(generator.throw!({ message: "error" }).value).toEqual(
       put(signInFailure("error"))
     );
   });

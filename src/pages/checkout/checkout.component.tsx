@@ -15,16 +15,16 @@ import {
   TotalContainer,
   TestWarningContainer,
   StripeButtonContainer,
-} from "./Checkout.styles";
+} from "./checkout.styles";
 
-interface ISelectorProps {
+export interface ISelectorProps {
   cartItems: ICartItem[];
   total: number;
 }
 
 type ICheckoutPageProps = ConnectedProps<typeof connector>;
 
-function CheckoutPage({ cartItems, total }: ICheckoutPageProps) {
+export function CheckoutPage({ cartItems, total }: ICheckoutPageProps) {
   return (
     <CheckoutPageContainer>
       <CheckoutHeaderContainer>

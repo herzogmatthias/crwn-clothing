@@ -47,9 +47,7 @@ describe("Shop Saga: fetchCollectionsAsync saga", () => {
     );
   });
   test("fire fetchCollectionsFailure if getCollections fails", () => {
-    const newGenerator = fetchCollectionAsync();
-    newGenerator.next();
-    expect(newGenerator.throw({ message: "error" }).value).toEqual(
+    expect(generator.throw({ message: "error" }).value).toEqual(
       put(fetchCollectionsFailure("error"))
     );
   });

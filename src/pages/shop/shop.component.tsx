@@ -11,9 +11,12 @@ const CollectionPage = lazy(() => import("../collection/collection.container"));
 
 type IShopPageProps = ConnectedProps<typeof connector> & RouteComponentProps;
 
-function ShopPage({ fetchCollectionsStart, match }: IShopPageProps) {
+export function ShopPage({
+  fetchCollectionsStart,
+  match,
+}: Partial<IShopPageProps>) {
   React.useEffect(() => {
-    fetchCollectionsStart();
+    fetchCollectionsStart!();
   }, []);
 
   return (
@@ -21,11 +24,11 @@ function ShopPage({ fetchCollectionsStart, match }: IShopPageProps) {
       <Suspense fallback={<Spinner></Spinner>}>
         <Route
           exact
-          path={`${match.path}`}
+          path={`${match!.path}`}
           component={CollectionsOverview}
         ></Route>
         <Route
-          path={`${match.path}/:categoryId`}
+          path={`${match!.path}/:categoryId`}
           component={CollectionPage}
         ></Route>
       </Suspense>
