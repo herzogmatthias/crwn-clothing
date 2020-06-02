@@ -11,57 +11,29 @@ import {
   FETCH_COLLECTIONS_FAILURE,
   FETCH_COLLECTIONS_START,
 } from "../../redux/shop/shop.types";
-import {
-  createAction,
-  ActionCreatorWithoutPayload,
-  createReducer,
-} from "@reduxjs/toolkit";
-import { mount, ShallowWrapper, ReactWrapper } from "enzyme";
+import { ActionCreatorWithoutPayload } from "@reduxjs/toolkit";
+import configureStore, { MockStoreEnhanced } from "redux-mock-store";
+import { mount, ReactWrapper } from "enzyme";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { ShopPage } from "./shop.component";
 
-interface IMockStore {
-  state: any;
-  reducers: ReducersMapObject<any, any>;
-}
-
-export const createMockStore = ({ state, reducers }: IMockStore) => {
-  const store = createStore(combineReducers(reducers), state);
-  return {
-    ...store,
-    persistor: {
-      persist: () => null,
-    },
-  };
-};
-
-describe("ShopPage", () => {
+describe("CONNECTED SHOPPAGE TESTS", () => {
   let wrapper: ReactWrapper;
-  let store: any;
+  let mockStore = configureStore([]);
+  let store: MockStoreEnhanced<unknown, {}>;
   let mockAction: ActionCreatorWithoutPayload<"FETCH_COLLECTIONS_START">;
   beforeEach(() => {
-    mockAction = jest.fn(createAction(FETCH_COLLECTIONS_START)) as any;
-    const mockReducer = createReducer(
-      { isFetching: false },
-      {
-        [mockAction.type]: (state, action) => {
-          console.log(state);
-          state.isFetching = true;
-        },
-      }
-    );
-
     const mockState = {
       shop: {
         isFetching: false,
       },
     };
 
-    store = createMockStore({
-      state: mockState,
-      reducers: { shop: mockReducer },
-    });
+    store = mockStore(mockState);
+    mockAction = jest.fn(() => {
+      store.dispatch({ type: FETCH_COLLECTIONS_START, payload: undefined });
+    }) as any;
 
     const mockMatch = {
       path: "",

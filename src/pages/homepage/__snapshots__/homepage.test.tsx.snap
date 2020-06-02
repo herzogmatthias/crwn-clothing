@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Homepage render Homepage 1`] = `
+exports[`HOMEPAGE TESTS render Homepage 1`] = `
 <styled.div>
   <Connect(Directory) />
 </styled.div>

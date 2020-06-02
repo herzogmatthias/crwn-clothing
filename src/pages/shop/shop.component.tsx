@@ -9,14 +9,12 @@ const CollectionsOverview = lazy(() =>
 );
 const CollectionPage = lazy(() => import("../collection/collection.container"));
 
-type IShopPageProps = ConnectedProps<typeof connector> & RouteComponentProps;
+type IShopPageProps = ConnectedProps<typeof connector> &
+  Partial<RouteComponentProps>;
 
-export function ShopPage({
-  fetchCollectionsStart,
-  match,
-}: Partial<IShopPageProps>) {
+export function ShopPage({ fetchCollectionsStart, match }: IShopPageProps) {
   React.useEffect(() => {
-    fetchCollectionsStart!();
+    fetchCollectionsStart();
   }, []);
 
   return (

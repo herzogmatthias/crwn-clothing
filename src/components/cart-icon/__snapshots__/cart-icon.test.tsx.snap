@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CONNECTED CARTICON TESTS render CartIcon Component 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Provider
+      store={
+        Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        }
+      }
+    >
+      <Connect(CartIcon)>
+        <CartIcon
+          itemCount={4}
+          toggleCartHidden={[Function]}
+        >
+          <styled.div
+            onClick={[Function]}
+          >
+            <div
+              className="sc-AxjAm fUffOI"
+              onClick={[Function]}
+            >
+              <Styled(Component)>
+                <ForwardRef(SvgShoppingBag)
+                  className="sc-AxirZ iKeIkB"
+                >
+                  <svg
+                    className="sc-AxirZ iKeIkB"
+                  >
+                    shopping-bag.svg
+                  </svg>
+                </ForwardRef(SvgShoppingBag)>
+              </Styled(Component)>
+              <styled.span>
+                <span
+                  className="sc-AxiKw iNislX"
+                >
+                  4
+                </span>
+              </styled.span>
+            </div>
+          </styled.div>
+        </CartIcon>
+      </Connect(CartIcon)>
+    </Provider>
+  </Router>
+</BrowserRouter>
+`;

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ShopPage render ShopPage component 1`] = `
+exports[`SHOPPAGE TESTS render ShopPage component 1`] = `
 <BrowserRouter>
   <Router
     history={
@@ -27,14 +27,12 @@ exports[`ShopPage render ShopPage component 1`] = `
     <Provider
       store={
         Object {
+          "clearActions": [Function],
           "dispatch": [Function],
+          "getActions": [Function],
           "getState": [Function],
-          "persistor": Object {
-            "persist": [Function],
-          },
           "replaceReducer": [Function],
           "subscribe": [Function],
-          Symbol(observable): [Function],
         }
       }
     >
@@ -47,10 +45,7 @@ exports[`ShopPage render ShopPage component 1`] = `
             "results": Array [
               Object {
                 "type": "return",
-                "value": Object {
-                  "payload": undefined,
-                  "type": "FETCH_COLLECTIONS_START",
-                },
+                "value": undefined,
               },
             ],
           }

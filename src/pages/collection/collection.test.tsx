@@ -5,7 +5,7 @@ import { CollectionPage } from "./collection.component";
 import { ICategory } from "../../redux/shop/ICategory";
 import { IShopItem } from "../../redux/shop/IShopItem";
 import { CollectionItemContainer } from "./collection.styles";
-describe("CollectionPage", () => {
+describe("NON CONNECTED COLLECTIONPAGE TESTS", () => {
   let wrapper: ShallowWrapper;
   let mockItems: IShopItem[] = [
     { id: 1, imageUrl: "asdfsd", name: "hat", price: 23 },

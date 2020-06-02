@@ -16,7 +16,7 @@ interface ISelectorProps {
 
 type ICartIconProps = ConnectedProps<typeof connector>;
 
-function CartIcon({ toggleCartHidden, itemCount }: ICartIconProps) {
+export function CartIcon({ toggleCartHidden, itemCount }: ICartIconProps) {
   return (
     <CartIconContainer onClick={toggleCartHidden}>
       <ShoppingIconContainer></ShoppingIconContainer>

@@ -1,0 +1,277 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CONNECTED CARTDROPDOWN TESTS render CartDropdown Component 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Provider
+      store={
+        Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        }
+      }
+    >
+      <withRouter(Connect(CartDropdown))>
+        <Connect(CartDropdown)
+          history={
+            Object {
+              "action": "POP",
+              "block": [Function],
+              "createHref": [Function],
+              "go": [Function],
+              "goBack": [Function],
+              "goForward": [Function],
+              "length": 1,
+              "listen": [Function],
+              "location": Object {
+                "hash": "",
+                "pathname": "/",
+                "search": "",
+                "state": undefined,
+              },
+              "push": [Function],
+              "replace": [Function],
+            }
+          }
+          location={
+            Object {
+              "hash": "",
+              "pathname": "/",
+              "search": "",
+              "state": undefined,
+            }
+          }
+          match={
+            Object {
+              "isExact": true,
+              "params": Object {},
+              "path": "/",
+              "url": "/",
+            }
+          }
+        >
+          <CartDropdown
+            cartItems={
+              Array [
+                Object {
+                  "id": 1,
+                  "imageUrl": "asdfasdf",
+                  "name": "hats",
+                  "price": 23,
+                  "quantity": 2,
+                },
+                Object {
+                  "id": 2,
+                  "imageUrl": "asdfasdf",
+                  "name": "hats",
+                  "price": 23,
+                  "quantity": 2,
+                },
+              ]
+            }
+            history={
+              Object {
+                "action": "POP",
+                "block": [Function],
+                "createHref": [Function],
+                "go": [Function],
+                "goBack": [Function],
+                "goForward": [Function],
+                "length": 1,
+                "listen": [Function],
+                "location": Object {
+                  "hash": "",
+                  "pathname": "/",
+                  "search": "",
+                  "state": undefined,
+                },
+                "push": [Function],
+                "replace": [Function],
+              }
+            }
+            location={
+              Object {
+                "hash": "",
+                "pathname": "/",
+                "search": "",
+                "state": undefined,
+              }
+            }
+            match={
+              Object {
+                "isExact": true,
+                "params": Object {},
+                "path": "/",
+                "url": "/",
+              }
+            }
+            toggleCartHidden={[Function]}
+          >
+            <styled.div
+              className="cart-dropdown"
+            >
+              <div
+                className="sc-AxgMl feQnvF cart-dropdown"
+              >
+                <styled.div>
+                  <div
+                    className="sc-Axmtr fIyTqw"
+                  >
+                    <Memo(CartItem)
+                      item={
+                        Object {
+                          "id": 1,
+                          "imageUrl": "asdfasdf",
+                          "name": "hats",
+                          "price": 23,
+                          "quantity": 2,
+                        }
+                      }
+                      key="1"
+                    >
+                      <styled.div>
+                        <div
+                          className="sc-AxirZ dItcAc"
+                        >
+                          <styled.img
+                            alt="item"
+                            src="asdfasdf"
+                          >
+                            <img
+                              alt="item"
+                              className="sc-AxjAm eYwkFk"
+                              src="asdfasdf"
+                            />
+                          </styled.img>
+                          <styled.div>
+                            <div
+                              className="sc-AxiKw fKyxRv"
+                            >
+                              <styled.span>
+                                <span
+                                  className="sc-AxhCb dBPtdb"
+                                >
+                                  hats
+                                </span>
+                              </styled.span>
+                              <span
+                                className="price"
+                              >
+                                2
+                                 x $
+                                23
+                              </span>
+                            </div>
+                          </styled.div>
+                        </div>
+                      </styled.div>
+                    </Memo(CartItem)>
+                    <Memo(CartItem)
+                      item={
+                        Object {
+                          "id": 2,
+                          "imageUrl": "asdfasdf",
+                          "name": "hats",
+                          "price": 23,
+                          "quantity": 2,
+                        }
+                      }
+                      key="2"
+                    >
+                      <styled.div>
+                        <div
+                          className="sc-AxirZ dItcAc"
+                        >
+                          <styled.img
+                            alt="item"
+                            src="asdfasdf"
+                          >
+                            <img
+                              alt="item"
+                              className="sc-AxjAm eYwkFk"
+                              src="asdfasdf"
+                            />
+                          </styled.img>
+                          <styled.div>
+                            <div
+                              className="sc-AxiKw fKyxRv"
+                            >
+                              <styled.span>
+                                <span
+                                  className="sc-AxhCb dBPtdb"
+                                >
+                                  hats
+                                </span>
+                              </styled.span>
+                              <span
+                                className="price"
+                              >
+                                2
+                                 x $
+                                23
+                              </span>
+                            </div>
+                          </styled.div>
+                        </div>
+                      </styled.div>
+                    </Memo(CartItem)>
+                  </div>
+                </styled.div>
+                <Styled(CustomButton)
+                  onClick={[Function]}
+                >
+                  <CustomButton
+                    className="sc-AxheI isBHfp"
+                    inverted={false}
+                    isGoogleSignIn={false}
+                    onClick={[Function]}
+                  >
+                    <styled.button
+                      className="sc-AxheI isBHfp"
+                      inverted={false}
+                      isGoogleSignIn={false}
+                      onClick={[Function]}
+                    >
+                      <button
+                        className="sc-AxhUy hdAkhk sc-AxheI isBHfp"
+                        onClick={[Function]}
+                      >
+                        GO TO CHECKOUT
+                      </button>
+                    </styled.button>
+                  </CustomButton>
+                </Styled(CustomButton)>
+              </div>
+            </styled.div>
+          </CartDropdown>
+        </Connect(CartDropdown)>
+      </withRouter(Connect(CartDropdown))>
+    </Provider>
+  </Router>
+</BrowserRouter>
+`;
