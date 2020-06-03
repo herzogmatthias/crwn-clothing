@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NON CONNECTED COLLECTION-ITEM TESTS render CollectionItem Component 1`] = `
+<styled.div>
+  <styled.div
+    imageUrl="asdf234"
+  />
+  <styled.div>
+    <styled.span>
+      hat
+    </styled.span>
+    <styled.span>
+      $
+      34
+    </styled.span>
+  </styled.div>
+  <Styled(CustomButton)
+    inverted={true}
+    onClick={[Function]}
+  >
+    Add to cart
+  </Styled(CustomButton)>
+</styled.div>
+`;

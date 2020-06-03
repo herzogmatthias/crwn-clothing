@@ -23,7 +23,7 @@ interface ISelectorProps {
 
 type IHeaderProps = ConnectedProps<typeof connector>;
 
-function Header({ currentUser, hidden, signOutStart }: IHeaderProps) {
+export function Header({ currentUser, hidden, signOutStart }: IHeaderProps) {
   return (
     <HeaderContainer>
       <LogoContainer to="/">

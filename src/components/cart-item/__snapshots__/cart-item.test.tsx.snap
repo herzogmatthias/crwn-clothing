@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NON CONNECTED CARTITEM TESTS render CartItem Component 1`] = `
+<styled.div>
+  <styled.img
+    alt="item"
+    src="asdf"
+  />
+  <styled.div>
+    <styled.span>
+      hats
+    </styled.span>
+    <span
+      className="price"
+    >
+      2
+       x $
+      34
+    </span>
+  </styled.div>
+</styled.div>
+`;

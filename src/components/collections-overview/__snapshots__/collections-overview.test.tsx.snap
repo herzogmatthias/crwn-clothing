@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CONNECTED COLLECTIONS-OVERVIEW TESTS render Collections-Overview Component 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Provider
+      store={
+        Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        }
+      }
+    >
+      <Connect(CollectionsOverview)>
+        <CollectionsOverview
+          collections={
+            Array [
+              Object {
+                "id": "asdfsa33",
+                "items": Array [],
+                "routeName": "/hats",
+                "title": "Hats",
+              },
+              Object {
+                "id": "asdfsa34",
+                "items": Array [],
+                "routeName": "/mens",
+                "title": "Mens",
+              },
+            ]
+          }
+        >
+          <styled.div>
+            <div
+              className="sc-fzoLsD iAaohI"
+            >
+              <CollectionPreview
+                items={Array []}
+                key="asdfsa33"
+                routeName="/hats"
+                title="Hats"
+              >
+                <styled.div>
+                  <div
+                    className="sc-Axmtr hTjEwh"
+                  >
+                    <styled.h1>
+                      <h1
+                        className="sc-AxmLO kBbsmV"
+                      >
+                        HATS
+                      </h1>
+                    </styled.h1>
+                    <styled.div>
+                      <div
+                        className="sc-fzozJi kAIeAo"
+                      />
+                    </styled.div>
+                  </div>
+                </styled.div>
+              </CollectionPreview>
+              <CollectionPreview
+                items={Array []}
+                key="asdfsa34"
+                routeName="/mens"
+                title="Mens"
+              >
+                <styled.div>
+                  <div
+                    className="sc-Axmtr hTjEwh"
+                  >
+                    <styled.h1>
+                      <h1
+                        className="sc-AxmLO kBbsmV"
+                      >
+                        MENS
+                      </h1>
+                    </styled.h1>
+                    <styled.div>
+                      <div
+                        className="sc-fzozJi kAIeAo"
+                      />
+                    </styled.div>
+                  </div>
+                </styled.div>
+              </CollectionPreview>
+            </div>
+          </styled.div>
+        </CollectionsOverview>
+      </Connect(CollectionsOverview)>
+    </Provider>
+  </Router>
+</BrowserRouter>
+`;

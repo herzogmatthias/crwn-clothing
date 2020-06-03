@@ -1,0 +1,256 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CONNECTED DIRECTORY TESTS render Directory Component 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Provider
+      store={
+        Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        }
+      }
+    >
+      <Connect(Directory)>
+        <Directory
+          sections={
+            Array [
+              Object {
+                "id": 1,
+                "imageUrl": "asdasdf",
+                "linkUrl": "asdfasdf",
+                "size": "lg",
+                "title": "Mens",
+              },
+              Object {
+                "id": 2,
+                "imageUrl": "asdasdf",
+                "linkUrl": "asdfasdf",
+                "title": "Mens",
+              },
+            ]
+          }
+        >
+          <styled.div>
+            <div
+              className="sc-AxgMl dIJrCX"
+            >
+              <withRouter(MenuItem)
+                imageUrl="asdasdf"
+                key="1"
+                linkUrl="asdfasdf"
+                size="lg"
+                title="Mens"
+              >
+                <MenuItem
+                  history={
+                    Object {
+                      "action": "POP",
+                      "block": [Function],
+                      "createHref": [Function],
+                      "go": [Function],
+                      "goBack": [Function],
+                      "goForward": [Function],
+                      "length": 1,
+                      "listen": [Function],
+                      "location": Object {
+                        "hash": "",
+                        "pathname": "/",
+                        "search": "",
+                        "state": undefined,
+                      },
+                      "push": [Function],
+                      "replace": [Function],
+                    }
+                  }
+                  imageUrl="asdasdf"
+                  linkUrl="asdfasdf"
+                  location={
+                    Object {
+                      "hash": "",
+                      "pathname": "/",
+                      "search": "",
+                      "state": undefined,
+                    }
+                  }
+                  match={
+                    Object {
+                      "isExact": true,
+                      "params": Object {},
+                      "path": "/",
+                      "url": "/",
+                    }
+                  }
+                  size="lg"
+                  title="Mens"
+                >
+                  <styled.div
+                    onClick={[Function]}
+                    size="lg"
+                  >
+                    <div
+                      className="sc-AxjAm ciHclU"
+                      onClick={[Function]}
+                      size="lg"
+                    >
+                      <styled.div
+                        url="asdasdf"
+                      >
+                        <div
+                          className="sc-AxirZ gTjdQT"
+                        />
+                      </styled.div>
+                      <styled.div
+                        className="content"
+                      >
+                        <div
+                          className="sc-AxiKw dlmRRm content"
+                        >
+                          <styled.h1
+                            className="title"
+                          >
+                            <h1
+                              className="sc-AxhCb fjAoqt title"
+                            >
+                              MENS
+                            </h1>
+                          </styled.h1>
+                          <styled.span
+                            className="subtitle"
+                          >
+                            <span
+                              className="sc-AxhUy fiTrJq subtitle"
+                            >
+                              SHOP NOW
+                            </span>
+                          </styled.span>
+                        </div>
+                      </styled.div>
+                    </div>
+                  </styled.div>
+                </MenuItem>
+              </withRouter(MenuItem)>
+              <withRouter(MenuItem)
+                imageUrl="asdasdf"
+                key="2"
+                linkUrl="asdfasdf"
+                title="Mens"
+              >
+                <MenuItem
+                  history={
+                    Object {
+                      "action": "POP",
+                      "block": [Function],
+                      "createHref": [Function],
+                      "go": [Function],
+                      "goBack": [Function],
+                      "goForward": [Function],
+                      "length": 1,
+                      "listen": [Function],
+                      "location": Object {
+                        "hash": "",
+                        "pathname": "/",
+                        "search": "",
+                        "state": undefined,
+                      },
+                      "push": [Function],
+                      "replace": [Function],
+                    }
+                  }
+                  imageUrl="asdasdf"
+                  linkUrl="asdfasdf"
+                  location={
+                    Object {
+                      "hash": "",
+                      "pathname": "/",
+                      "search": "",
+                      "state": undefined,
+                    }
+                  }
+                  match={
+                    Object {
+                      "isExact": true,
+                      "params": Object {},
+                      "path": "/",
+                      "url": "/",
+                    }
+                  }
+                  title="Mens"
+                >
+                  <styled.div
+                    onClick={[Function]}
+                  >
+                    <div
+                      className="sc-AxjAm ezlgHt"
+                      onClick={[Function]}
+                    >
+                      <styled.div
+                        url="asdasdf"
+                      >
+                        <div
+                          className="sc-AxirZ gTjdQT"
+                        />
+                      </styled.div>
+                      <styled.div
+                        className="content"
+                      >
+                        <div
+                          className="sc-AxiKw dlmRRm content"
+                        >
+                          <styled.h1
+                            className="title"
+                          >
+                            <h1
+                              className="sc-AxhCb fjAoqt title"
+                            >
+                              MENS
+                            </h1>
+                          </styled.h1>
+                          <styled.span
+                            className="subtitle"
+                          >
+                            <span
+                              className="sc-AxhUy fiTrJq subtitle"
+                            >
+                              SHOP NOW
+                            </span>
+                          </styled.span>
+                        </div>
+                      </styled.div>
+                    </div>
+                  </styled.div>
+                </MenuItem>
+              </withRouter(MenuItem)>
+            </div>
+          </styled.div>
+        </Directory>
+      </Connect(Directory)>
+    </Provider>
+  </Router>
+</BrowserRouter>
+`;

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ISection } from "../../redux/directory/ISection";
-import MenuItem from "../menu-item/menu-item.components";
+import MenuItem from "../menu-item/menu-item.component";
 import { connect, ConnectedProps } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { RootState } from "../../redux/root-reducer";
@@ -13,7 +13,7 @@ interface ISelectorProps {
 
 type IDirectoryProps = ConnectedProps<typeof connector>;
 
-function Directory({ sections }: IDirectoryProps) {
+export function Directory({ sections }: IDirectoryProps) {
   return (
     <DirectoryMenuContainer>
       {sections.map(({ id, ...sectionProps }) => {

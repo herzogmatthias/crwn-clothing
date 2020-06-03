@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuItem component render MenuItem component 1`] = `
+<styled.div
+  onClick={[Function]}
+  size="large"
+>
+  <styled.div
+    url="testimage"
+  />
+  <styled.div
+    className="content"
+  >
+    <styled.h1
+      className="title"
+    >
+      HATS
+    </styled.h1>
+    <styled.span
+      className="subtitle"
+    >
+      SHOP NOW
+    </styled.span>
+  </styled.div>
+</styled.div>
+`;

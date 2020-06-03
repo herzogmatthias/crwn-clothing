@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CollectionPage should render the CollectionPage component 1`] = `
+exports[`NON CONNECTED COLLECTIONPAGE TESTS should render the CollectionPage component 1`] = `
 <styled.div>
   <styled.h2>
     Test

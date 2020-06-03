@@ -15,7 +15,7 @@ export interface IMenuItemProps extends RouteComponentProps<{}> {
   size?: string;
 }
 
-function MenuItem({
+export function MenuItem({
   title,
   imageUrl,
   size,

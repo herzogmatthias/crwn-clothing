@@ -22,7 +22,7 @@ type ICheckoutItemProps = ConnectedProps<typeof connector> & {
   cartItem: ICartItem;
 };
 
-function CheckoutItem({
+export function CheckoutItem({
   cartItem,
   clearItemFromCart,
   addItem,

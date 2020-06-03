@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SHOPPAGE TESTS render ShopPage component 1`] = `
+exports[`CONNECTED SHOPPAGE TESTS render ShopPage component 1`] = `
 <BrowserRouter>
   <Router
     history={

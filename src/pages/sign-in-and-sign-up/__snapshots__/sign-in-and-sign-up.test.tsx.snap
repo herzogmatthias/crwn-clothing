@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SIGN-IN-AND-SIGN-UP render SignInAndSignUp Component 1`] = `
+exports[`SIGN-IN-AND-SIGN-UP TESTS render SignInAndSignUp Component 1`] = `
 <styled.div>
   <Connect(SignIn) />
   <Connect(SignUp) />

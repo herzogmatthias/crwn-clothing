@@ -13,7 +13,9 @@ interface ISelectorProps {
 
 type ICollectionsOverviewProps = ConnectedProps<typeof connector>;
 
-function CollectionsOverview({ collections }: ICollectionsOverviewProps) {
+export function CollectionsOverview({
+  collections,
+}: ICollectionsOverviewProps) {
   return (
     <CollectionOverviewContainer>
       {collections.map(({ id, ...otherCollectionProps }: ICategory) => {

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CHECKOUT TESTS render CheckoutPage component 1`] = `
+exports[`NON CONNECTED CHECKOUT TESTS render CheckoutPage component 1`] = `
 <styled.div>
   <styled.div>
     <styled.div>

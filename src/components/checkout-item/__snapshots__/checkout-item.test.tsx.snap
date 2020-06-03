@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NON CONNECTED CHECKOUT-ITEM TESTS render Checkout-Item Component 1`] = `
+<styled.div>
+  <styled.div>
+    <styled.img
+      alt="item"
+      src="asdfasdf"
+    />
+  </styled.div>
+  <styled.span>
+    hats
+  </styled.span>
+  <styled.span>
+    <styled.div
+      onClick={[Function]}
+    >
+      ❮
+    </styled.div>
+    <styled.span>
+      2
+    </styled.span>
+    <styled.div
+      onClick={[Function]}
+    >
+      ❯
+    </styled.div>
+  </styled.span>
+  <styled.span>
+    23
+  </styled.span>
+  <styled.div
+    onClick={[Function]}
+  >
+    ✕
+  </styled.div>
+</styled.div>
+`;

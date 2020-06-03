@@ -1,0 +1,188 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CONNECTED HEADER TESTS render Directory Component 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Provider
+      store={
+        Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        }
+      }
+    >
+      <Connect(Header)>
+        <Header
+          currentUser={
+            Object {
+              "createdAt": Date { NaN },
+              "displayName": "asdf",
+              "email": "asdf@gmail.com",
+              "id": "asdlfjas",
+            }
+          }
+          hidden={true}
+          signOutStart={[Function]}
+        >
+          <styled.div>
+            <div
+              className="sc-fzplWN kRkQAc"
+            >
+              <Styled(Link)
+                to="/"
+              >
+                <Link
+                  className="sc-fznyAO bVJWQd"
+                  to="/"
+                >
+                  <LinkAnchor
+                    className="sc-fznyAO bVJWQd"
+                    href="/"
+                    navigate={[Function]}
+                  >
+                    <a
+                      className="sc-fznyAO bVJWQd"
+                      href="/"
+                      onClick={[Function]}
+                    >
+                      <ForwardRef(SvgCrown)
+                        className="logo"
+                      >
+                        <svg
+                          className="logo"
+                        >
+                          crown.svg
+                        </svg>
+                      </ForwardRef(SvgCrown)>
+                    </a>
+                  </LinkAnchor>
+                </Link>
+              </Styled(Link)>
+              <styled.div>
+                <div
+                  className="sc-fznKkj jFMUGs"
+                >
+                  <Styled(Link)
+                    to="/shop"
+                  >
+                    <Link
+                      className="sc-fznZeY cLBAIR"
+                      to="/shop"
+                    >
+                      <LinkAnchor
+                        className="sc-fznZeY cLBAIR"
+                        href="/shop"
+                        navigate={[Function]}
+                      >
+                        <a
+                          className="sc-fznZeY cLBAIR"
+                          href="/shop"
+                          onClick={[Function]}
+                        >
+                          SHOP
+                        </a>
+                      </LinkAnchor>
+                    </Link>
+                  </Styled(Link)>
+                  <Styled(Link)
+                    to="/contact"
+                  >
+                    <Link
+                      className="sc-fznZeY cLBAIR"
+                      to="/contact"
+                    >
+                      <LinkAnchor
+                        className="sc-fznZeY cLBAIR"
+                        href="/contact"
+                        navigate={[Function]}
+                      >
+                        <a
+                          className="sc-fznZeY cLBAIR"
+                          href="/contact"
+                          onClick={[Function]}
+                        >
+                          CONTACT
+                        </a>
+                      </LinkAnchor>
+                    </Link>
+                  </Styled(Link)>
+                  <Styled(Link)
+                    as="div"
+                    onClick={[Function]}
+                  >
+                    <div
+                      className="sc-fznZeY cLBAIR"
+                      onClick={[Function]}
+                    >
+                      SIGN OUT
+                    </div>
+                  </Styled(Link)>
+                  <Connect(CartIcon)>
+                    <CartIcon
+                      itemCount={4}
+                      toggleCartHidden={[Function]}
+                    >
+                      <styled.div
+                        onClick={[Function]}
+                      >
+                        <div
+                          className="sc-AxjAm fUffOI"
+                          onClick={[Function]}
+                        >
+                          <Styled(Component)>
+                            <ForwardRef(SvgShoppingBag)
+                              className="sc-AxirZ iKeIkB"
+                            >
+                              <svg
+                                className="sc-AxirZ iKeIkB"
+                              >
+                                shopping-bag.svg
+                              </svg>
+                            </ForwardRef(SvgShoppingBag)>
+                          </Styled(Component)>
+                          <styled.span>
+                            <span
+                              className="sc-AxiKw iNislX"
+                            >
+                              4
+                            </span>
+                          </styled.span>
+                        </div>
+                      </styled.div>
+                    </CartIcon>
+                  </Connect(CartIcon)>
+                </div>
+              </styled.div>
+            </div>
+          </styled.div>
+        </Header>
+      </Connect(Header)>
+    </Provider>
+  </Router>
+</BrowserRouter>
+`;

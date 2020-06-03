@@ -16,7 +16,11 @@ type ICollectionItemProps = ConnectedProps<typeof connector> & {
   className?: string;
 };
 
-function CollectionItem({ item, addItem, className }: ICollectionItemProps) {
+export function CollectionItem({
+  item,
+  addItem,
+  className,
+}: ICollectionItemProps) {
   return (
     <CollectionItemContainer className={className}>
       <ImageContainer imageUrl={item.imageUrl}></ImageContainer>

@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NON CONNECTED CUSTOM-BUTTON TESTS render Custom Button 1`] = `
+<styled.button
+  inverted={false}
+  isGoogleSignIn={false}
+/>
+`;
