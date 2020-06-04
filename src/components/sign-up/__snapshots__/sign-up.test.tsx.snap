@@ -1,0 +1,206 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NON CONNECTED SIGN UP TEST render SignUp Component 1`] = `
+<SignUp
+  signUpStart={[MockFunction]}
+>
+  <styled.div>
+    <div
+      className="sc-AxhUy hnTNpP"
+    >
+      <styled.h2>
+        <h2
+          className="sc-AxgMl iLAkrD"
+        >
+          I do not have an account
+        </h2>
+      </styled.h2>
+      <span>
+        Sign up with your email and password
+      </span>
+      <form
+        onSubmit={[Function]}
+      >
+        <FormInput
+          handleChange={[Function]}
+          label="Diplay Name"
+          name="displayName"
+          required={true}
+          type="text"
+          value=""
+        >
+          <styled.div>
+            <div
+              className="sc-AxjAm hendVB"
+            >
+              <styled.input
+                name="displayName"
+                onChange={[Function]}
+                required={true}
+                type="text"
+                value=""
+              >
+                <input
+                  className="sc-AxiKw eoQQwa"
+                  name="displayName"
+                  onChange={[Function]}
+                  required={true}
+                  type="text"
+                  value=""
+                />
+              </styled.input>
+              <styled.label
+                length={0}
+              >
+                <label
+                  className="sc-AxirZ hZnEDN"
+                >
+                  Diplay Name
+                </label>
+              </styled.label>
+            </div>
+          </styled.div>
+        </FormInput>
+        <FormInput
+          handleChange={[Function]}
+          label="Email"
+          name="email"
+          required={true}
+          type="email"
+          value=""
+        >
+          <styled.div>
+            <div
+              className="sc-AxjAm hendVB"
+            >
+              <styled.input
+                name="email"
+                onChange={[Function]}
+                required={true}
+                type="email"
+                value=""
+              >
+                <input
+                  className="sc-AxiKw eoQQwa"
+                  name="email"
+                  onChange={[Function]}
+                  required={true}
+                  type="email"
+                  value=""
+                />
+              </styled.input>
+              <styled.label
+                length={0}
+              >
+                <label
+                  className="sc-AxirZ hZnEDN"
+                >
+                  Email
+                </label>
+              </styled.label>
+            </div>
+          </styled.div>
+        </FormInput>
+        <FormInput
+          handleChange={[Function]}
+          label="Password"
+          name="password"
+          required={true}
+          type="password"
+          value=""
+        >
+          <styled.div>
+            <div
+              className="sc-AxjAm hendVB"
+            >
+              <styled.input
+                name="password"
+                onChange={[Function]}
+                required={true}
+                type="password"
+                value=""
+              >
+                <input
+                  className="sc-AxiKw kaLtRc"
+                  name="password"
+                  onChange={[Function]}
+                  required={true}
+                  type="password"
+                  value=""
+                />
+              </styled.input>
+              <styled.label
+                length={0}
+              >
+                <label
+                  className="sc-AxirZ hZnEDN"
+                >
+                  Password
+                </label>
+              </styled.label>
+            </div>
+          </styled.div>
+        </FormInput>
+        <FormInput
+          handleChange={[Function]}
+          label="Confirm Password"
+          name="confirmPassword"
+          required={true}
+          type="password"
+          value=""
+        >
+          <styled.div>
+            <div
+              className="sc-AxjAm hendVB"
+            >
+              <styled.input
+                name="confirmPassword"
+                onChange={[Function]}
+                required={true}
+                type="password"
+                value=""
+              >
+                <input
+                  className="sc-AxiKw kaLtRc"
+                  name="confirmPassword"
+                  onChange={[Function]}
+                  required={true}
+                  type="password"
+                  value=""
+                />
+              </styled.input>
+              <styled.label
+                length={0}
+              >
+                <label
+                  className="sc-AxirZ hZnEDN"
+                >
+                  Confirm Password
+                </label>
+              </styled.label>
+            </div>
+          </styled.div>
+        </FormInput>
+        <CustomButton
+          inverted={false}
+          isGoogleSignIn={false}
+          type="submit"
+        >
+          <styled.button
+            inverted={false}
+            isGoogleSignIn={false}
+            type="submit"
+          >
+            <button
+              className="sc-AxhCb jMBtEZ"
+              type="submit"
+            >
+              SIGN UP
+            </button>
+          </styled.button>
+        </CustomButton>
+      </form>
+    </div>
+  </styled.div>
+</SignUp>
+`;

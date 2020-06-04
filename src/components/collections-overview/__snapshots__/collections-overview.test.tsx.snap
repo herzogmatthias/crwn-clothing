@@ -59,56 +59,146 @@ exports[`CONNECTED COLLECTIONS-OVERVIEW TESTS render Collections-Overview Compon
             <div
               className="sc-fzoLsD iAaohI"
             >
-              <CollectionPreview
+              <withRouter(CollectionPreview)
                 items={Array []}
                 key="asdfsa33"
                 routeName="/hats"
                 title="Hats"
               >
-                <styled.div>
-                  <div
-                    className="sc-Axmtr hTjEwh"
-                  >
-                    <styled.h1>
-                      <h1
-                        className="sc-AxmLO kBbsmV"
+                <CollectionPreview
+                  history={
+                    Object {
+                      "action": "POP",
+                      "block": [Function],
+                      "createHref": [Function],
+                      "go": [Function],
+                      "goBack": [Function],
+                      "goForward": [Function],
+                      "length": 1,
+                      "listen": [Function],
+                      "location": Object {
+                        "hash": "",
+                        "pathname": "/",
+                        "search": "",
+                        "state": undefined,
+                      },
+                      "push": [Function],
+                      "replace": [Function],
+                    }
+                  }
+                  items={Array []}
+                  location={
+                    Object {
+                      "hash": "",
+                      "pathname": "/",
+                      "search": "",
+                      "state": undefined,
+                    }
+                  }
+                  match={
+                    Object {
+                      "isExact": true,
+                      "params": Object {},
+                      "path": "/",
+                      "url": "/",
+                    }
+                  }
+                  routeName="/hats"
+                  title="Hats"
+                >
+                  <styled.div>
+                    <div
+                      className="sc-Axmtr hTjEwh"
+                    >
+                      <styled.h1
+                        onClick={[Function]}
                       >
-                        HATS
-                      </h1>
-                    </styled.h1>
-                    <styled.div>
-                      <div
-                        className="sc-fzozJi kAIeAo"
-                      />
-                    </styled.div>
-                  </div>
-                </styled.div>
-              </CollectionPreview>
-              <CollectionPreview
+                        <h1
+                          className="sc-AxmLO kMIfDs"
+                          onClick={[Function]}
+                        >
+                          HATS
+                        </h1>
+                      </styled.h1>
+                      <styled.div>
+                        <div
+                          className="sc-fzozJi kAIeAo"
+                        />
+                      </styled.div>
+                    </div>
+                  </styled.div>
+                </CollectionPreview>
+              </withRouter(CollectionPreview)>
+              <withRouter(CollectionPreview)
                 items={Array []}
                 key="asdfsa34"
                 routeName="/mens"
                 title="Mens"
               >
-                <styled.div>
-                  <div
-                    className="sc-Axmtr hTjEwh"
-                  >
-                    <styled.h1>
-                      <h1
-                        className="sc-AxmLO kBbsmV"
+                <CollectionPreview
+                  history={
+                    Object {
+                      "action": "POP",
+                      "block": [Function],
+                      "createHref": [Function],
+                      "go": [Function],
+                      "goBack": [Function],
+                      "goForward": [Function],
+                      "length": 1,
+                      "listen": [Function],
+                      "location": Object {
+                        "hash": "",
+                        "pathname": "/",
+                        "search": "",
+                        "state": undefined,
+                      },
+                      "push": [Function],
+                      "replace": [Function],
+                    }
+                  }
+                  items={Array []}
+                  location={
+                    Object {
+                      "hash": "",
+                      "pathname": "/",
+                      "search": "",
+                      "state": undefined,
+                    }
+                  }
+                  match={
+                    Object {
+                      "isExact": true,
+                      "params": Object {},
+                      "path": "/",
+                      "url": "/",
+                    }
+                  }
+                  routeName="/mens"
+                  title="Mens"
+                >
+                  <styled.div>
+                    <div
+                      className="sc-Axmtr hTjEwh"
+                    >
+                      <styled.h1
+                        onClick={[Function]}
                       >
-                        MENS
-                      </h1>
-                    </styled.h1>
-                    <styled.div>
-                      <div
-                        className="sc-fzozJi kAIeAo"
-                      />
-                    </styled.div>
-                  </div>
-                </styled.div>
-              </CollectionPreview>
+                        <h1
+                          className="sc-AxmLO kMIfDs"
+                          onClick={[Function]}
+                        >
+                          MENS
+                        </h1>
+                      </styled.h1>
+                      <styled.div>
+                        <div
+                          className="sc-fzozJi kAIeAo"
+                        />
+                      </styled.div>
+                    </div>
+                  </styled.div>
+                </CollectionPreview>
+              </withRouter(CollectionPreview)>
             </div>
           </styled.div>
         </CollectionsOverview>

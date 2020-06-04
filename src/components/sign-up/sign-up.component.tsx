@@ -8,7 +8,7 @@ import { ConnectedProps, connect } from "react-redux";
 
 type ISignUpProps = ConnectedProps<typeof connector>;
 
-function SignUp({ signUpStart }: ISignUpProps) {
+export function SignUp({ signUpStart }: ISignUpProps) {
   const [signUpInfo, setSignUpInfo] = React.useState<ISignUpInfo>({
     displayName: "",
     confirmPassword: "",
@@ -19,14 +19,17 @@ function SignUp({ signUpStart }: ISignUpProps) {
 
   const _handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    if (password !== confirmPassword) {
+    if (password !== confirmPassword && password != "") {
+      console.log("form failed");
       alert("passwords don't match");
       return;
     }
+    console.log("form passed");
     signUpStart(signUpInfo);
   };
   const _handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = event.target;
+    console.log(value);
     setSignUpInfo((prevState) => ({ ...prevState, [name]: value }));
   };
   return (

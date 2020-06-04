@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NON CONNECTED FORM-INPUT TESTS render FormInput component 1`] = `
+<styled.div>
+  <styled.input
+    name="email"
+    onChange={[MockFunction]}
+    required={true}
+    type="email"
+    value="test@gmail.com"
+  />
+  <styled.label
+    length={14}
+  >
+    email
+  </styled.label>
+</styled.div>
+`;

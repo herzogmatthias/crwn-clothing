@@ -4,7 +4,7 @@ import { ICategory } from "../../redux/shop/ICategory";
 import { createStructuredSelector } from "reselect";
 import { RootState } from "../../redux/root-reducer";
 import { selectCollectionsForPreview } from "../../redux/shop/shop.selectors";
-import { CollectionPreview } from "../preview-collection/collection-preview.component";
+import CollectionPreview from "../collection-preview/collection-preview.component";
 import { CollectionOverviewContainer } from "./collection-overview.styles";
 
 interface ISelectorProps {
