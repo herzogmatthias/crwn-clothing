@@ -8,7 +8,6 @@ export interface IWithSpinnerProps {
 const WithSpinner = <P extends object>(
   WrappedComponent: React.ComponentType<P>
 ) => ({ isLoading, ...otherProps }: IWithSpinnerProps & P) => {
-  console.log(isLoading);
   return isLoading ? (
     <Spinner></Spinner>
   ) : (

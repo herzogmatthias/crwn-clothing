@@ -7,11 +7,9 @@ export interface IStripeButtonProps {
 }
 
 export default function StripeButton({ price, className }: IStripeButtonProps) {
-  console.log(className);
   const priceForStripe = price * 100;
   const publishableKey = process.env.REACT_APP_STRIPE_KEY!;
   const _onToken = (token: Token) => {
-    console.log(token);
     alert("Payment succesful");
   };
 

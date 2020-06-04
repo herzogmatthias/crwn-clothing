@@ -72,7 +72,6 @@ export const addCollectionAndDocuments = async (
   objectsToAdd: Omit<ICategory, "id" | "routeName">[]
 ) => {
   const collectionRef = firestore.collection(collectionKey);
-  console.log(collectionRef);
 
   const batch = firestore.batch();
   objectsToAdd.forEach((val, ind) => {

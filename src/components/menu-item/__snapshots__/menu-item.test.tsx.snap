@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MenuItem component render MenuItem component 1`] = `
+exports[`NOT CONNECTED MENU-ITEM COMPONENT render MenuItem component 1`] = `
 <styled.div
   onClick={[Function]}
   size="large"

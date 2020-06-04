@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NON CONNECTED SIGN-IN TESTS render SignIn Component 1`] = `
+<SignIn
+  emailSignInStart={[MockFunction]}
+  googleSignInStart={[MockFunction]}
+>
+  <styled.div>
+    <div
+      className="sc-AxhUy fTRnYT"
+    >
+      <styled.h2>
+        <h2
+          className="sc-AxgMl iLAkrD"
+        >
+          I already have an account
+        </h2>
+      </styled.h2>
+      <span>
+        Sign in with your email and password
+      </span>
+      <form
+        onSubmit={[Function]}
+      >
+        <FormInput
+          handleChange={[Function]}
+          label="Email"
+          name="email"
+          required={true}
+          type="email"
+          value=""
+        >
+          <styled.div>
+            <div
+              className="sc-AxjAm hendVB"
+            >
+              <styled.input
+                name="email"
+                onChange={[Function]}
+                required={true}
+                type="email"
+                value=""
+              >
+                <input
+                  className="sc-AxiKw eoQQwa"
+                  name="email"
+                  onChange={[Function]}
+                  required={true}
+                  type="email"
+                  value=""
+                />
+              </styled.input>
+              <styled.label
+                length={0}
+              >
+                <label
+                  className="sc-AxirZ hZnEDN"
+                >
+                  Email
+                </label>
+              </styled.label>
+            </div>
+          </styled.div>
+        </FormInput>
+        <FormInput
+          handleChange={[Function]}
+          label="Password"
+          name="password"
+          required={true}
+          type="password"
+          value=""
+        >
+          <styled.div>
+            <div
+              className="sc-AxjAm hendVB"
+            >
+              <styled.input
+                name="password"
+                onChange={[Function]}
+                required={true}
+                type="password"
+                value=""
+              >
+                <input
+                  className="sc-AxiKw kaLtRc"
+                  name="password"
+                  onChange={[Function]}
+                  required={true}
+                  type="password"
+                  value=""
+                />
+              </styled.input>
+              <styled.label
+                length={0}
+              >
+                <label
+                  className="sc-AxirZ hZnEDN"
+                >
+                  Password
+                </label>
+              </styled.label>
+            </div>
+          </styled.div>
+        </FormInput>
+        <styled.div>
+          <div
+            className="sc-AxheI eSdjqR"
+          >
+            <CustomButton
+              inverted={false}
+              isGoogleSignIn={false}
+              type="submit"
+            >
+              <styled.button
+                inverted={false}
+                isGoogleSignIn={false}
+                type="submit"
+              >
+                <button
+                  className="sc-AxhCb jMBtEZ"
+                  type="submit"
+                >
+                  Sign In
+                </button>
+              </styled.button>
+            </CustomButton>
+            <CustomButton
+              inverted={false}
+              isGoogleSignIn={true}
+              onClick={[MockFunction]}
+              type="button"
+            >
+              <styled.button
+                inverted={false}
+                isGoogleSignIn={true}
+                onClick={[MockFunction]}
+                type="button"
+              >
+                <button
+                  className="sc-AxhCb gXJAEf"
+                  onClick={[MockFunction]}
+                  type="button"
+                >
+                  Sign In with Google
+                </button>
+              </styled.button>
+            </CustomButton>
+          </div>
+        </styled.div>
+      </form>
+    </div>
+  </styled.div>
+</SignIn>
+`;

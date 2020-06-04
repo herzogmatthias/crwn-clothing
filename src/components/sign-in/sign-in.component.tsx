@@ -15,13 +15,13 @@ import { connect, ConnectedProps } from "react-redux";
 
 type ISignInProps = ConnectedProps<typeof connector>;
 
-function SignIn({ googleSignInStart, emailSignInStart }: ISignInProps) {
+export function SignIn({ googleSignInStart, emailSignInStart }: ISignInProps) {
   const [signInInfo, setSignInInfo] = React.useState<ISignInInfo>({
     email: "",
     password: "",
   });
   const { email, password } = signInInfo;
-  const _handleSubmit = async (event: React.FormEvent) => {
+  const _handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     emailSignInStart({ email, password });
   };
